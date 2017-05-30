@@ -20,9 +20,12 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     }).when('/addPet',{
       templateUrl: '/views/addPet.html',
       controller: "PetController as pc"
-    }).when('/allPets',{
-      templateUrl: '/views/allPets.html',
-      controller: "PetController as pc"
+    }).when('/care',{
+      templateUrl: '/views/care.html',
+      controller: 'PetController as pc'
+    }).when('/household',{
+      templateUrl: '/views/household.html',
+      controller: 'UserController as uc'
     })
     .otherwise({
       redirectTo: 'home'

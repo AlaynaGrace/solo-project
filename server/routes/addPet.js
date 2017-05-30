@@ -2,6 +2,8 @@ var express = require('express');
 var router = express.Router();
 var path = require('path');
 var pet = require('../models/pet.model');
+var user = require('../models/user.model');
+
 
 // Handles Ajax request for user information if user is authenticated
 router.get('/', function(req, res) {
@@ -15,7 +17,15 @@ router.get('/', function(req, res) {
       user: req.user
     };
 
-
+    user.find(function(err,data){
+      if(err){
+        console.log(err);
+        res.send(req.user);
+      }
+      else{
+        responseObject.userList = data;
+      }
+    });
     pet.find(function(err,data){
       if(err){
         res.send(req.user);

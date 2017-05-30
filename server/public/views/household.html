@@ -1,0 +1,13 @@
+<div class="container">
+  <div>
+    <a href="/addPet">Add a Pet</a> |
+    <a href="/userHome">Household Pets</a> |
+    <a href="/care">Pet Care</a> |
+    <a href="/household">Household</a>
+  </div>
+  <h1>Household users</h1>
+  <div ng-repeat="user in uc.userList">
+    <b>Username: </b>{{user.username}} | <b>Phone Number: </b> {{user.phone}} |
+    <button ng-click="uc.removeUser(user._id)">Remove</button>
+  </div>
+</div>

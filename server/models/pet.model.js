@@ -6,6 +6,7 @@ var petSchema = new Schema({
   breed: String,
   color: String,
   age: Number,
+  agelength: String,
   care: String,
   owner: {type: String, required: true},
   feed: Boolean,

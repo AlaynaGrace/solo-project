@@ -1,25 +1,9 @@
-# Express/Passport Lecture Starting File
-Download and run 'npm install' before the lecture as prep. In this lecture, we will build out a user registration page and allow our users to log into our application. Once they are logged in, we will see information returned to us, specific to the user.
+# Solo Project
 
-## Branches
-* `master`: Built using client-side routing with ngRoute instead of full HTML pages. Uses MongoDB.
-* `sql_strategy`: Replaces master branch MongoDB with PostGRES for storage of user data. Maintains bcrypt functionality.
+## What's left
 
-
-## OLD Branches
-
-Historical record keeping, do not use these branches
-
-* **DEPRECATED** `angular-complete`: Angular and MongoDB version as shown to Iota cohort.
-* **DEPRECATED** `angular-controlled-login-intro`: Introduces Angular as the login handler. All server communication is handled in an Angular Controller and updates the route/page based on success or failure. Intended for an alternate intro lecture to Passport (as seen in angular-complete and sql_strategy). Uses MongoDB.
-* **DEPRECATED** `angular-ctrl-with-routes`: Like `angular-controlled-login-intro` but is built using client-side routing with ngRoute instead of full HTML pages. Uses MongoDB.
-
-
-## Notes
-
-* Only three main situations this code handles:
-  1. no account
-  2. register/account creation (make username and password)
-  3. logging in
-
-* After logging in, all other requests follow
+1. Send a confirm when someone types in a new household
+2. Add new user by email or maybe by text
+3. Style it so it actually looks nice
+4. Do drop down bar instead of links
+5. Stretch Goals

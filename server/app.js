@@ -12,6 +12,8 @@ var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
 var addPet = require('./routes/addPet');
+var sendMessage = require('./routes/sendMessage');
+
 
 
 // Body parser middleware
@@ -38,6 +40,7 @@ app.use(passport.session());
 app.use('/register', register);
 app.use('/user', user);
 app.use('/pets', addPet);
+app.use('/sendMessage',sendMessage);
 app.use('/*', index);
 
 // Mongo Connection //

@@ -1,0 +1,18 @@
+<div class="container">
+  <div>
+    <a href="/addPet">Add a Pet</a> |
+    <a href="/userHome">Household Pets</a> |
+    <a href="/care">Pet Care</a> |
+    <a href="/household">Household</a>
+  </div>
+  <h1>Care</h1>
+  <!-- <h3>Animals</h3> -->
+  <div ng-repeat="pet in pc.petList">
+    <h4>{{pet.name}}</h4>
+
+      <input type="checkbox" name="" ng-click="pc.addAction(pet.name, 'fed')"> Fed
+      <input type="checkbox" name="" ng-click="pc.addAction(pet.name, 'watered')"> Given Water
+    <hr>
+  </div>
+  <button ng-click="pc.sendText()">Send Care Text</button>
+</div>

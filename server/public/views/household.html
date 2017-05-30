@@ -7,7 +7,8 @@
   </div>
   <h1>Household users</h1>
   <div ng-repeat="user in uc.userList">
-    <b>Username: </b>{{user.username}} | <b>Phone Number: </b> {{user.phone}} |
+    <b>Username: </b>{{user.username}} | <b>Phone Number: </b> {{user.phone}} 
     <button class="btn btn-default" ng-click="uc.removeUser(user._id)">Remove</button>
+    <hr>
   </div>
 </div>

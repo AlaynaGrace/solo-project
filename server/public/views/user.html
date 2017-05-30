@@ -4,22 +4,20 @@
     <a href="/userHome">Household Pets</a> |
     <a href="/care">Pet Care</a> |
     <a href="/household">Household</a>
-  </div>
-  <div class="welcomeMessage">
-    <h1 id="welcome" class="lead">Welcome, {{uc.userName}}!</h1>
-    <p>Explain the app here</p>
-  </div>
 
-    <!-- <p>Your phone number: {{uc.phoneNumber}} | Your household: {{uc.houseHold}}</p> -->
-    <!-- <a href="/addPet">Add a Pet</a>
-    <a href="/allPets">Household Pets</a> -->
-    <div ng-controller="PetController as pc">
-      <header ng-include="'/views/allPets.html'"></header>
-    </div>
+  </div>
+      <div class="welcomeMessage">
+        <h1>Welcome, {{uc.userName}}!</h1>
+        <p>With Our Hobby Farm, you will now be able to track pet care efficiently.
+        No more wondering if the pets got fed or were given water! Our Hobby Farm
+      sends a text message to everyone in your household when another user finishes
+      a care task!</p>
+      </div>
+        <div ng-controller="PetController as pc">
+          <header ng-include="'/views/allPets.html'"></header>
+        </div>
+        <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>
+        
 
-</div>
-<div>
-  <br>
-  <hr>
-  <button class="btn btn-default" ng-click="uc.logout()">Log Out</button>
-</div>
+
+  </div>

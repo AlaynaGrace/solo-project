@@ -47,7 +47,35 @@
 .pet{
   border: solid 1px black;
   border-radius: 8px;
+  background-color: white;
+  color: black;
 }
 .welcomeMessage{
   text-align: center;
+}
+body{
+  background-color: #42ac48;
+  color: white;
+}
+.jumbotron{
+  text-align: center;
+  background-image: url('http://41sxr63vhe3b11yxuh2mklkp.wpengine.netdna-cdn.com/wp-content/uploads/2015/08/narnu-animal-banner-optim2.jpg');
+  background-size: contain;
+  text-shadow: 1px 1px black;
+}
+a{
+  color:#DDDDDD;
+}
+.logout{
+  border: 0px;
+  background-color: transparent;
+  margin: 0;
+  font-size: 16px;
+  color: #DDDDDD;
+  margin-left: 99%;
+  margin-top: 0%;
+
+}
+.logout:hover{
+  background-color: transparent;
 }

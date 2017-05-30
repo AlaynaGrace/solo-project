@@ -1,0 +1,46 @@
+<!-- this first div will be changed to a drop down menu -->
+<div class="container">
+  <div>
+    <a href="/addPet">Add a Pet</a>
+    <a href="/userHome">Household Pets</a>
+  </div>
+  <div>
+    <h2>Add a Pet</h2>
+    <!-- Add a household input or track it -->
+    <label for="name">Name:</label>
+    <input type="text" ng-model="pc.name" value="">
+    <br>
+    <label for="breed">Breed:</label>
+    <input type="text" ng-model="pc.breed" value="">
+    <br>
+    <label for="color">Color:</label>
+    <input type="text" ng-model="pc.color" value="">
+    <br>
+    <label for="age">Age:</label>
+    <input type="number" ng-model="pc.age" value="">
+    <br>
+  <!-- turn this into a larger text box -->
+    <label for="care">Care Information:</label>
+    <br>
+    <!-- <input id="care" type="text" ng-model="pc.care" value=""> -->
+    <textarea name="name" rows="8" cols="80" ng-model="pc.care"></textarea>
+    <br>
+    <label for="owner">Owner:</label>
+    <input type="text" ng-model="pc.owner" value="">
+    <br>
+    <input type="checkbox" ng-model="pc.checkbox.feed"> Feed
+    <input type="checkbox" ng-model="pc.checkbox.water"> Water
+    <input type="checkbox" ng-model="pc.checkbox.walk"> Walk
+    <input type="checkbox" ng-model="pc.checkbox.bathe"> Bathe
+    <input type="checkbox" ng-model="pc.checkbox.treats"> Treats
+    <input type="checkbox" ng-model="pc.checkbox.litter"> Clean Litter
+
+
+
+
+
+    <br>
+    <button ng-click="pc.addNewPet()">Add</button>
+
+  </div>
+</div>

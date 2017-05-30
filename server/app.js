@@ -11,6 +11,8 @@ var session = require('express-session');
 var index = require('./routes/index');
 var user = require('./routes/user');
 var register = require('./routes/register');
+var addPet = require('./routes/addPet');
+
 
 // Body parser middleware
 app.use(bodyParser.json());
@@ -25,7 +27,7 @@ app.use(session({
    key: 'user', // this is the name of the req.variable. 'user' is convention, but not required
    resave: 'true',
    saveUninitialized: false,
-   cookie: { maxage: 60000, secure: false }
+   cookie: { maxage: 6000000, secure: false }
 }));
 
 // start up passport sessions
@@ -35,13 +37,14 @@ app.use(passport.session());
 // Routes
 app.use('/register', register);
 app.use('/user', user);
+app.use('/pets', addPet);
 app.use('/*', index);
 
 // Mongo Connection //
 var mongoURI = '';
 // process.env.MONGODB_URI will only be defined if you
 // are running on Heroku
-if(process.env.MONGODB_URI != undefined) {
+if(process.env.MONGODB_URI !== undefined) {
     // use the string value of the environment variable
     mongoURI = process.env.MONGODB_URI;
 } else {
@@ -64,7 +67,7 @@ mongoDB.once('open', function(){
 });
 
 // App Set //
-app.set('port', (process.env.PORT || 5000));
+app.set('port', (process.env.PORT || 3333));
 
 // Listen //
 app.listen(app.get("port"), function(){

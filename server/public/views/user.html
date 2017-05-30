@@ -1,5 +1,23 @@
 <div class="container">
+  <div>
+    <a href="/addPet">Add a Pet</a>
+    <a href="/userHome">Household Pets</a>
+  </div>
+  <div class="welcomeMessage">
     <h1 id="welcome" class="lead">Welcome, {{uc.userName}}!</h1>
-    <p>This is the user page!</p>
-    <button class="btn btn-default" ng-click="uc.logout()">Log Out</button>
+    <p>Explain the app here</p>
+  </div>
+
+    <!-- <p>Your phone number: {{uc.phoneNumber}} | Your household: {{uc.houseHold}}</p> -->
+    <!-- <a href="/addPet">Add a Pet</a>
+    <a href="/allPets">Household Pets</a> -->
+    <div ng-controller="PetController as pc">
+      <header ng-include="'/views/allPets.html'"></header>
+    </div>
+
+</div>
+<div>
+  <br>
+  <hr>
+  <button class="btn btn-default" ng-click="uc.logout()">Log Out</button>
 </div>

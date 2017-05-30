@@ -9,6 +9,8 @@ myApp.controller('UserController', ['$http', '$location', function($http, $locat
       if(response.data.username) {
           // user has a curret session on the server
           vm.userName = response.data.username;
+          vm.phoneNumber = response.data.phone;
+          vm.houseHold = response.data.household;
           console.log('User Data: ', vm.userName);
       } else {
           // user has no session, bounce them back to the login page
@@ -21,5 +23,5 @@ myApp.controller('UserController', ['$http', '$location', function($http, $locat
       console.log('logged out');
       $location.path("/home");
     });
-  }
+  };
 }]);

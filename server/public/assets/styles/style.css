@@ -39,3 +39,15 @@
 .btn-danger{
     margin-left: 10px;
 }
+
+#care{
+  line-height: 200%;
+  height: 200px;
+}
+.pet{
+  border: solid 1px black;
+  border-radius: 8px;
+}
+.welcomeMessage{
+  text-align: center;
+}

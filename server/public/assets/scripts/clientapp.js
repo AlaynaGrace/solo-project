@@ -28,7 +28,7 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       controller: 'UserController as uc'
     })
     .otherwise({
-      redirectTo: 'home'
+      redirectTo: '/home'
     });
 
 }]);

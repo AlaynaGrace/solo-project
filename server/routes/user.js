@@ -66,6 +66,19 @@ router.get('/list',function(req,res){
   });
 });
 
+router.put('/:id', function(req,res){
+  console.log('user is now on the server:',req.body);
+  user.update({_id: req.params.id}, req.body,function(err){
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    }
+    else{
+      res.sendStatus(200);
+    }
+  });
+});
+
 
 
 module.exports = router;

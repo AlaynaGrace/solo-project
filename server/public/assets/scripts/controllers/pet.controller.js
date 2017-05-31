@@ -89,26 +89,26 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
     });
   };
 
-  vm.actionObject = {fed: [], watered: []};
+  vm.actionObject = {care: []};
   vm.addAction = function(pet, action){
     switch(action){
       case 'Fed':
-        vm.actionObject.fed.push(pet + ' was fed.');
+        vm.actionObject.care.push(pet + ' was fed.');
         break;
       case 'Given Water':
-        vm.actionObject.watered.push(pet + ' was given water.');
+        vm.actionObject.care.push(pet + ' was given water.');
         break;
       case 'Walked':
-        vm.actionObject.watered.push(pet + ' was taken on a walk.');
+        vm.actionObject.care.push(pet + ' was taken on a walk.');
         break;
       case 'Bathed':
-        vm.actionObject.watered.push(pet + ' was given a bath.');
+        vm.actionObject.care.push(pet + ' was given a bath.');
         break;
       case 'Given Treat':
-        vm.actionObject.watered.push(pet + ' was given a treat.');
+        vm.actionObject.care.push(pet + ' was given a treat.');
         break;
       case 'Changed Litter':
-        vm.actionObject.watered.push(pet + ' had his/her litter changed.');
+        vm.actionObject.care.push(pet + ' had his/her litter changed.');
         break;
       default:
         alert('None of the cases were met');
@@ -117,12 +117,20 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
 
   vm.sendText = function(){
     var phoneNumber = '';
+    var message = {
+      action: vm.actionObject,
+      number: '',
+      extra: vm.observations
+    };
+
     for (var i = 0; i < vm.userList.length; i++) {
       phoneNumber = '+1' + vm.userList[i].phone;
-      TextService.sendText({action: vm.actionObject, number: phoneNumber});
+      message.number = phoneNumber;
+      TextService.sendText(message);
     }
     console.log('weird object', vm.actionObject);
-    vm.actionObject = {fed: [], watered:[]};
+    vm.actionObject = {care:[]};
+    vm.observations = '';
   };
 
 }]);

@@ -17,11 +17,11 @@ router.post('/', function(req, res) {
   // check if logged in
   if(req.isAuthenticated()) {
     var message = '';
-    for (let i = 0; i < req.body.action.fed.length; i++) {
-      message += req.body.action.fed[i] + '\n';
+    for (let i = 0; i < req.body.action.care.length; i++) {
+      message += req.body.action.care[i] + '\n';
     }
-    for (let i = 0; i < req.body.action.watered.length; i++) {
-      message += req.body.action.watered[i] + '\n';
+    if(req.body.extra !== ''){
+      message += 'Extra Observations:' + req.body.extra + '\n';
     }
     client.messages.create({
         to: req.body.number,

@@ -1,4 +1,4 @@
-myApp.controller('UserController', ['$http', '$location', 'TextService','UserListService',function($http, $location, TextService, UserListService) {
+myApp.controller('UserController', ['$http', '$location', 'TextService','UserListService','AdminService',function($http, $location, TextService, UserListService, AdminService) {
   // This happens after view/controller loads -- not ideal but it works for now.
   var vm = this;
 
@@ -60,6 +60,22 @@ myApp.controller('UserController', ['$http', '$location', 'TextService','UserLis
     TextService.inviteNewUser(vm.newUserNumber, vm.houseHold).then(function(){
       vm.newUserNumber = '';
     });
+  };
+
+  vm.updateAdminStatus = function(user){
+    console.log('here is the user to change:',user);
+    var objectToChange = {
+      admin: true,
+      username: user.username,
+      password: user.password,
+      phone: user.phone,
+      household: user.household
+    };
+
+    AdminService.changeAdminStatus(objectToChange, user._id).then(function(){
+      vm.getUsers();
+    });
+
   };
 
 }]);

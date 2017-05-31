@@ -13,7 +13,12 @@
   <h1>Household users</h1>
   <div ng-repeat="user in uc.userList">
     <b>Username: </b>{{user.username}} | <b>Phone Number: </b> {{user.phone}}
-    <span ng-if="uc.admin"><button class="btn btn-default" ng-click="uc.removeUser(user._id)">Remove</button></span>
+    <span ng-if="uc.admin">
+      <button class="btn btn-default" ng-click="uc.removeUser(user._id)">Remove</button>
+      <span ng-if="!user.admin">
+        <button type="button" class="btn btn-default" name="button" ng-click="uc.updateAdminStatus(user)">Make Admin</button>
+      </span>
+    </span>
     <hr>
   </div>
   <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>

@@ -7,12 +7,14 @@
   </div>
   <h1>Care</h1>
   <!-- <h3>Animals</h3> -->
-  <div ng-repeat="pet in pc.petList">
+  <div ng-repeat="pet in pc.careList">
     <h4>{{pet.name}}</h4>
-
-      <input type="checkbox" name="" ng-click="pc.addAction(pet.name, 'fed')"> Fed
-      <input type="checkbox" name="" ng-click="pc.addAction(pet.name, 'watered')"> Given Water
+    <div ng-repeat="care in pet.care">
+      <input type="checkbox" name="" ng-click="pc.addAction(pet.name, care)"> {{care}}
+    </div>
     <hr>
   </div>
   <button class="btn btn-default" ng-click="pc.sendText()">Send Care Text</button>
+  <button class="btn btn-default logout" ng-click="pc.logout()">Log Out</button>
+
 </div>

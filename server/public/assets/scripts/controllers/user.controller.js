@@ -1,4 +1,4 @@
-myApp.controller('UserController', ['$http', '$location', function($http, $location) {
+myApp.controller('UserController', ['$http', '$location', 'TextService','UserListService',function($http, $location, TextService, UserListService) {
   // This happens after view/controller loads -- not ideal but it works for now.
   var vm = this;
 
@@ -25,11 +25,14 @@ myApp.controller('UserController', ['$http', '$location', function($http, $locat
             vm.houseHold = response.data.user.household;
             // vm.userList = response.data.userList;
             vm.userList = [];
-            for(var i=0; i<response.data.userList.length;i++){
-              if(response.data.userList[i].household === vm.houseHold){
-                vm.userList.push(response.data.userList[i]);
+            UserListService.getUserList().then(function(data){
+              console.log('this is the data:',data);
+              for(var i=0; i<data.length;i++){
+                if(data[i].household === vm.houseHold){
+                  vm.userList.push(data[i]);
+                }
               }
-            }
+            });
             console.log('userList in household:',vm.userList);
         } else {
             // user has no session, bounce them back to the login page
@@ -51,4 +54,11 @@ myApp.controller('UserController', ['$http', '$location', function($http, $locat
       console.log(res);
     });
   };
+
+  vm.inviteNewUser = function(){
+    TextService.inviteNewUser(vm.newUserNumber, vm.houseHold).then(function(){
+      vm.newUserNumber = '';
+    });
+  };
+
 }]);

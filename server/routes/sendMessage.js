@@ -47,4 +47,21 @@ router.post('/', function(req, res) {
   }
 });
 
+router.post('/invite',function(req,res){
+  client.messages.create({
+      to: "+1" + req.body.number,
+      from: "+17633163561",
+      body: 'You have been invited to join Our Hobby Farm! Your household is: ' + req.body.household,
+  }, function(err, message) {
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    }
+    else{
+      console.log(message.sid);
+      res.sendStatus(200);
+    }
+  });
+});
+
 module.exports = router;

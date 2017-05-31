@@ -79,3 +79,7 @@ a{
 .logout:hover{
   background-color: transparent;
 }
+
+select, input, textarea{
+  color: black;
+}

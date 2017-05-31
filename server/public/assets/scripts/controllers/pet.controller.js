@@ -1,4 +1,4 @@
-myApp.controller('PetController', ['PetService','$http', 'TextService',function(PetService,$http, TextService){
+myApp.controller('PetController', ['PetService','$http', 'TextService', 'UserListService',function(PetService,$http, TextService, UserListService){
   var vm = this;
   // vm.petList = PetService.allPets.petList;
   vm.petList = [];
@@ -13,11 +13,15 @@ myApp.controller('PetController', ['PetService','$http', 'TextService',function(
           vm.phoneNumber = response.data.user.phone;
           vm.houseHold = response.data.user.household;
           vm.userList = [];
-          for(var i=0; i<response.data.userList.length;i++){
-            if(response.data.userList[i].household === vm.houseHold){
-              vm.userList.push(response.data.userList[i]);
+          UserListService.getUserList().then(function(data){
+            console.log('this is the data:',data);
+            for(var i=0; i<data.length;i++){
+              if(data[i].household === vm.houseHold){
+                vm.userList.push(data[i]);
+              }
             }
-          }
+          });
+
           console.log('User Data: ', vm.userList);
           // console.log('phoneNumber');
       } else {
@@ -78,14 +82,27 @@ myApp.controller('PetController', ['PetService','$http', 'TextService',function(
       vm.getAllPets();
     });
   };
+
   vm.actionObject = {fed: [], watered: []};
   vm.addAction = function(pet, action){
     switch(action){
-      case 'fed':
-        vm.actionObject.fed.push(pet + ' was fed');
+      case 'Fed':
+        vm.actionObject.fed.push(pet + ' was fed.');
         break;
-      case 'watered':
-        vm.actionObject.watered.push(pet + ' was given water');
+      case 'Given Water':
+        vm.actionObject.watered.push(pet + ' was given water.');
+        break;
+      case 'Walked':
+        vm.actionObject.watered.push(pet + ' was taken on a walk.');
+        break;
+      case 'Bathed':
+        vm.actionObject.watered.push(pet + ' was given a bath.');
+        break;
+      case 'Given Treat':
+        vm.actionObject.watered.push(pet + ' was given a treat.');
+        break;
+      case 'Changed Litter':
+        vm.actionObject.watered.push(pet + ' had his/her litter changed.');
         break;
       default:
         alert('None of the cases were met');
@@ -102,11 +119,9 @@ myApp.controller('PetController', ['PetService','$http', 'TextService',function(
     vm.actionObject = {fed: [], watered:[]};
   };
 
-  // vm.sendText = function(){
-  //   vm.sendMultipleText().then(function(err){
-  //     vm.actionObject = {fed:[], watered:[]};
-  //     console.log('after sending text:', vm.actionObject);
-  //   });
-  // };
+  PetService.getPetCare(vm.houseHold).then(function(data){
+    console.log('this is the careList:',data);
+    vm.careList = data;
+  });
 
 }]);

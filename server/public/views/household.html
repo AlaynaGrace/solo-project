@@ -5,10 +5,17 @@
     <a href="/care">Pet Care</a> |
     <a href="/household">Household</a>
   </div>
+  <h1>Invite a User</h1>
+  <label for="phoneNumber">Phone Number:</label>
+  <input type="text" ng-model="uc.newUserNumber" value="">
+  <button type="button" class="btn btn-default" ng-click="uc.inviteNewUser()" name="button">Invite</button>
+  <hr>
   <h1>Household users</h1>
   <div ng-repeat="user in uc.userList">
-    <b>Username: </b>{{user.username}} | <b>Phone Number: </b> {{user.phone}} 
+    <b>Username: </b>{{user.username}} | <b>Phone Number: </b> {{user.phone}}
     <button class="btn btn-default" ng-click="uc.removeUser(user._id)">Remove</button>
     <hr>
   </div>
+  <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>
+
 </div>

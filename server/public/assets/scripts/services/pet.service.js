@@ -45,4 +45,45 @@ myApp.service('PetService', ['$http',function($http){
     });
   };
 
+  self.getPetCare = function(household){
+    return $http({
+      method: 'GET',
+      url: '/pets'
+    }).then(function success(res){
+      console.log(res.data.pets);
+      var careArray = [];
+      for(var i in res.data.pets){
+        var pet = res.data.pets[i];
+        console.log('in for loop with this pet:',pet);
+        var careObject = {care:[], name: ''};
+        if(pet.household === household){
+          careObject.name = pet.name;
+          if(pet.feed){
+            careObject.care.push('Fed');
+          }
+          if(pet.water){
+            careObject.care.push('Given Water');
+          }
+          if(pet.walk){
+            careObject.care.push('Walked');
+          }
+          if(pet.bathe){
+            careObject.care.push('Bathed');
+          }
+          if(pet.treats){
+            careObject.care.push('Given Treat');
+          }
+          if(pet.litter){
+            careObject.care.push('Changed Litter');
+          }
+          careArray.push(careObject);
+        }
+      }
+      return careArray;
+
+    },function failure(res){
+      console.log(res);
+    });
+  };
+
 }]);

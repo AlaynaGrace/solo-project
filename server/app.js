@@ -37,7 +37,7 @@ app.use(passport.initialize());
 app.use(passport.session());
 
 // Routes
-app.use('/register', register);
+app.use('/registerUser', register);
 app.use('/user', user);
 app.use('/pets', addPet);
 app.use('/sendMessage',sendMessage);

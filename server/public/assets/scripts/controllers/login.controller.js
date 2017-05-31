@@ -46,7 +46,7 @@ myApp.controller('LoginController', ['$http', '$location', 'RegisterService', fu
         console.log('newHousehold:',vm.newHousehold);
         if(vm.user.admin !== undefined){
           console.log('sending to server...', vm.user);
-          $http.post('/register', vm.user).then(function(response) {
+          $http.post('/registerUser', vm.user).then(function(response) {
             console.log('success');
             $location.path('/home');
           },

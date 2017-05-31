@@ -56,10 +56,11 @@ myApp.service('PetService', ['$http',function($http){
       for(var i in res.data.pets){
         var pet = res.data.pets[i];
         console.log('in for loop with this pet:',pet);
-        var careObject = {care:[], name: ''};
+        var careObject = {care:[], name: '', info:''};
         console.log('your household:',household, 'pet household:',pet.household);
         if(pet.household === household){
           careObject.name = pet.name;
+          careObject.info = pet.care;
           if(pet.feed){
             careObject.care.push('Fed');
           }

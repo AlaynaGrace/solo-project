@@ -83,3 +83,32 @@ a{
 select, input, textarea{
   color: black;
 }
+.invite{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  color: black;
+  margin: 10px;
+  text-align: center;
+}
+.links{
+  padding:10px;
+}
+.users{
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 8px;
+  padding: 10px;
+  color: black;
+  margin: 10px;
+}
+#household{
+  text-align: center;
+}
+.login{
+  text-align: center;
+}
+#register{
+  color: navy;
+}

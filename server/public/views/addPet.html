@@ -1,58 +1,52 @@
 <!-- this first div will be changed to a drop down menu -->
 <div class="container">
-  <div>
+  <div class="links">
+    <a href="/userHome">Home</a> |
     <a href="/addPet">Add a Pet</a> |
-    <a href="/userHome">Household Pets</a> |
     <a href="/care">Pet Care</a> |
     <a href="/household">Household</a>
   </div>
   <div>
-    <h2>Add a Pet</h2>
-    <!-- Add a household input or track it -->
-    <label for="name">Name:</label>
-    <input type="text" ng-model="pc.name" value="">
-    <br>
-    <label for="breed">Breed:</label>
-    <input type="text" ng-model="pc.breed" value="">
-    <br>
-    <label for="color">Color:</label>
-    <input type="text" ng-model="pc.color" value="">
-    <br>
-    <label for="age">Age:</label>
-    <input type="number" ng-model="pc.age" value="">
-    <select name="age-length" ng-model="pc.agelength">
-      <option value="year(s)">year(s)</option>
-      <option value="month(s)">month(s)</option>
-      <option value="day(s)">day(s)</option>
-    </select>
-    <br>
-  <!-- turn this into a larger text box -->
-    <label for="care">Care Information:</label>
-    <br>
-    <!-- <input id="care" type="text" ng-model="pc.care" value=""> -->
-    <textarea name="name" rows="8" cols="80" ng-model="pc.care"></textarea>
-    <br>
-    <label for="owner">Owner:</label>
-    <!-- <input type="text" ng-model="pc.owner" value=""> -->
-    <select name="Owners" ng-model="pc.owner">
-      <option ng-repeat="owner in pc.userList" value="{{owner.username}}">{{owner.username}}</option>
-    </select>
-    <br>
-    <input type="checkbox" ng-model="pc.checkbox.feed"> Feed
-    <input type="checkbox" ng-model="pc.checkbox.water"> Water
-    <input type="checkbox" ng-model="pc.checkbox.walk"> Walk
-    <input type="checkbox" ng-model="pc.checkbox.bathe"> Bathe
-    <input type="checkbox" ng-model="pc.checkbox.treats"> Treats
-    <input type="checkbox" ng-model="pc.checkbox.litter"> Clean Litter
+    <div class="users">
+      <h2 id="household">Add a Pet</h2>
+      <!-- Add a household input or track it -->
+      <label for="name">Name:</label>
+      <input type="text" ng-model="pc.name" value="">
+      <br>
+      <label for="breed">Breed:</label>
+      <input type="text" ng-model="pc.breed" value="">
+      <br>
+      <label for="color">Color:</label>
+      <input type="text" ng-model="pc.color" value="">
+      <br>
+      <label for="age">Age:</label>
+      <input type="number" ng-model="pc.age" value="">
+      <select name="age-length" ng-model="pc.agelength">
+        <option value="year(s)">year(s)</option>
+        <option value="month(s)">month(s)</option>
+        <option value="day(s)">day(s)</option>
+      </select>
+      <br>
+      <label for="care">Care Information:</label>
+      <br>
+      <textarea name="name" rows="8" cols="80" ng-model="pc.care"></textarea>
+      <br>
+      <label for="owner">Owner:</label>
+      <select name="Owners" ng-model="pc.owner">
+        <option ng-repeat="owner in pc.userList" value="{{owner.username}}">{{owner.username}}</option>
+      </select>
+      <br>
+      <input type="checkbox" ng-model="pc.checkbox.feed"> Feed
+      <input type="checkbox" ng-model="pc.checkbox.water"> Water
+      <input type="checkbox" ng-model="pc.checkbox.walk"> Walk
+      <input type="checkbox" ng-model="pc.checkbox.bathe"> Bathe
+      <input type="checkbox" ng-model="pc.checkbox.treats"> Treats
+      <input type="checkbox" ng-model="pc.checkbox.litter"> Clean Litter
+      <br>
+      <button class="btn btn-default" ng-click="pc.addNewPet()">Add</button>
+      </div>
+    </div>
 
-
-
-
-
-    <br>
-    <button class="btn btn-default" ng-click="pc.addNewPet()">Add</button>
-
-  </div>
   <div ng-controller="UserController as uc">
     <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>
   </div>

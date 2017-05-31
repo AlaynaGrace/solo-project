@@ -7,4 +7,3 @@
 * Stretch Goals
 * Make a real readme
 * Actually explain what the app does in an eloquent fashion
-* Make it so admins can give other users admin status

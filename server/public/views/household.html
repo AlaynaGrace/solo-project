@@ -1,26 +1,31 @@
 <div class="container">
-  <div>
+  <div class="links">
     <a href="/addPet">Add a Pet</a> |
     <a href="/userHome">Household Pets</a> |
     <a href="/care">Pet Care</a> |
     <a href="/household">Household</a>
   </div>
-  <h1>Invite a User</h1>
-  <label for="phoneNumber">Phone Number:</label>
-  <input type="text" ng-model="uc.newUserNumber" value="">
-  <button type="button" class="btn btn-default" ng-click="uc.inviteNewUser()" name="button">Invite</button>
-  <hr>
-  <h1>Household users</h1>
-  <div ng-repeat="user in uc.userList">
-    <b>Username: </b>{{user.username}} | <b>Phone Number: </b> {{user.phone}}
-    <span ng-if="uc.admin">
-      <button class="btn btn-default" ng-click="uc.removeUser(user._id)">Remove</button>
-      <span ng-if="!user.admin">
-        <button type="button" class="btn btn-default" name="button" ng-click="uc.updateAdminStatus(user)">Make Admin</button>
-      </span>
-    </span>
-    <hr>
+  <div class="invite">
+    <h1>Invite a User</h1>
+    <label for="phoneNumber">Phone Number:</label>
+    <input type="text" ng-model="uc.newUserNumber" value="">
+    <button type="button" class="btn btn-default" ng-click="uc.inviteNewUser()" name="button">Invite</button>
   </div>
+  <div class="users">
+    <h1 id="household">Household users</h1>
+    <br>
+    <div ng-repeat="user in uc.userList">
+      <b>Username: </b>{{user.username}} | <b>Phone Number: </b> {{user.phone}}
+      <span ng-if="uc.admin">
+        <button class="btn btn-default" ng-click="uc.removeUser(user._id)">Remove</button>
+        <span ng-if="!user.admin">
+          <button type="button" class="btn btn-default" name="button" ng-click="uc.updateAdminStatus(user)">Make Admin</button>
+        </span>
+      </span>
+      <hr>
+    </div>
+  </div>
+
   <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>
 
 </div>

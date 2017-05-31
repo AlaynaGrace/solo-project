@@ -1,23 +1,29 @@
 <div class="container">
-  <div>
+  <div class="links">
+    <a href="/userHome">Home</a> |
     <a href="/addPet">Add a Pet</a> |
-    <a href="/userHome">Household Pets</a> |
     <a href="/care">Pet Care</a> |
     <a href="/household">Household</a>
   </div>
-  <h1>Care</h1>
-  <!-- <h3>Animals</h3> -->
-  <div ng-repeat="pet in pc.careList">
-    <h4>{{pet.name}}</h4>
-    <div ng-repeat="care in pet.care">
-      <input type="checkbox" name="" ng-click="pc.addAction(pet.name, care)"> {{care}}
-    </div>
+  <div class="users">
+    <h1 id="household">Care</h1>
     <hr>
+    <div ng-repeat="pet in pc.careList">
+      <h4>{{pet.name}}</h4>
+      <div ng-repeat="care in pet.care">
+        <input type="checkbox" ng-click="pc.addAction(pet.name, care)"> {{care}}
+      </div>
+      <br>
+      <b>Care Info:</b><br>
+      {{pet.info}}
+      <hr>
+    </div>
+    <label for="Observations">Observations:</label>
+    <br>
+    <textarea ng-model="pc.observations" rows="8" cols="80"></textarea>
+    <br>
+    <button class="btn btn-default" ng-click="pc.sendText()">Send Care Text</button>
   </div>
-  <label for="Observations">Observations:</label>
-  <br>
-  <textarea name="name" ng-model="pc.observations" rows="8" cols="80"></textarea>
-  <button class="btn btn-default" ng-click="pc.sendText()">Send Care Text</button>
   <div ng-controller="UserController as uc">
     <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>
   </div>

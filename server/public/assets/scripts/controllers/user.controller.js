@@ -23,6 +23,7 @@ myApp.controller('UserController', ['$http', '$location', 'TextService','UserLis
             vm.userName = response.data.user.username;
             vm.phoneNumber = response.data.user.phone;
             vm.houseHold = response.data.user.household;
+            vm.admin = response.data.user.admin;
             // vm.userList = response.data.userList;
             vm.userList = [];
             UserListService.getUserList().then(function(data){

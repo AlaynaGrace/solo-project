@@ -15,6 +15,7 @@
     <hr>
   </div>
   <button class="btn btn-default" ng-click="pc.sendText()">Send Care Text</button>
-  <button class="btn btn-default logout" ng-click="pc.logout()">Log Out</button>
-
+  <div ng-controller="UserController as uc">
+    <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>
+  </div>
 </div>

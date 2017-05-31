@@ -1,8 +1,9 @@
-myApp.controller('PetController', ['PetService','$http', 'TextService', 'UserListService',function(PetService,$http, TextService, UserListService){
+myApp.controller('PetController', ['PetService','$http', 'TextService','UserListService','$location',function(PetService,$http, TextService, UserListService, $location){
   var vm = this;
   // vm.petList = PetService.allPets.petList;
   vm.petList = [];
   vm.message = PetService.allPets.message;
+  // vm.houseHold = '';
   // vm.userList = [];
 
   $http.get('/pets').then(function(response) {
@@ -14,12 +15,17 @@ myApp.controller('PetController', ['PetService','$http', 'TextService', 'UserLis
           vm.houseHold = response.data.user.household;
           vm.userList = [];
           UserListService.getUserList().then(function(data){
-            console.log('this is the data:',data);
+            console.log('this is the data from userList:',data);
             for(var i=0; i<data.length;i++){
               if(data[i].household === vm.houseHold){
                 vm.userList.push(data[i]);
               }
             }
+
+          });
+          PetService.getPetCare(vm.houseHold).then(function(data){
+            console.log('this is the careList:',data, 'and this is your household:', vm.houseHold);
+            vm.careList = data;
           });
 
           console.log('User Data: ', vm.userList);
@@ -118,10 +124,5 @@ myApp.controller('PetController', ['PetService','$http', 'TextService', 'UserLis
     console.log('weird object', vm.actionObject);
     vm.actionObject = {fed: [], watered:[]};
   };
-
-  PetService.getPetCare(vm.houseHold).then(function(data){
-    console.log('this is the careList:',data);
-    vm.careList = data;
-  });
 
 }]);

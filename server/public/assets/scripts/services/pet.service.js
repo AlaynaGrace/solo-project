@@ -46,6 +46,7 @@ myApp.service('PetService', ['$http',function($http){
   };
 
   self.getPetCare = function(household){
+    console.log('this is at the beginning:',household);
     return $http({
       method: 'GET',
       url: '/pets'
@@ -56,6 +57,7 @@ myApp.service('PetService', ['$http',function($http){
         var pet = res.data.pets[i];
         console.log('in for loop with this pet:',pet);
         var careObject = {care:[], name: ''};
+        console.log('your household:',household, 'pet household:',pet.household);
         if(pet.household === household){
           careObject.name = pet.name;
           if(pet.feed){

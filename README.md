@@ -3,10 +3,11 @@
 ## What's left
 
 * Fix register page (have to click register twice for it to work)
+* Fix weird additionalComments bug that creates an undefined part in email
+* Finish the file upload
 * Continue styling so that it continues to look nice
 * Make a real readme
 * Use grunt to minify everything so that it runs faster
-* Be able to upload images from computer
 * Create tests
 * Actually explain what the app does in an eloquent fashion
 
@@ -21,8 +22,8 @@
 File Uploads
 Handling image/file uploads has many components and has been solved repeatedly in many different ways. Regardless of the cloud service you want to use to store the file, you need to handle:
 
-  1. Use a file input form element to allow user to choose a local file
-  2. Get this file to your server with a POST request
+  X1. Use a file input form element to allow user to choose a local file
+  X2. Get this file to your server with a POST request
   3. On the server, you need to use a middleware that supports multi-part forms (multer is an example). Body Parser does NOT do this.
   4. Take the file data and save it on the local file system temporarily
   5. Upload this file to your storage API of choice

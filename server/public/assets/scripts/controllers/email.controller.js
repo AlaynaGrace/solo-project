@@ -24,7 +24,7 @@ myApp.controller('EmailController', ['$http','EmailService','PetService',functio
           careMessage += '<b>' + data[i].name + ' (' + data[i].color + ' ' + data[i].breed + '):</b> ' + data[i].care + '<br><br>';
         }
       }
-      if(vm.additionalComments !== ''){
+      if(vm.additionalComments !== '' || vm.additionalComments !== undefined){
         careMessage += '<b>Additional Comments:</b> '+ vm.additionalComments;
 
       }

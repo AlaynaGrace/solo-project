@@ -3,6 +3,7 @@ var app = express();
 var bodyParser = require('body-parser');
 var mongoose = require('mongoose');
 var path = require('path');
+var logger = require('morgan');
 
 var passport = require('./strategies/user.strategy');
 var session = require('express-session');
@@ -14,12 +15,14 @@ var register = require('./routes/register');
 var addPet = require('./routes/addPet');
 var sendMessage = require('./routes/sendMessage');
 var sendEmail = require('./routes/sendEmail');
+var upload = require('./routes/upload');
 
 
 
 // Body parser middleware
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
+app.use(logger('dev'));
 
 // Serve back static files
 app.use(express.static(path.join(__dirname, './public')));
@@ -43,6 +46,7 @@ app.use('/user', user);
 app.use('/pets', addPet);
 app.use('/sendMessage',sendMessage);
 app.use('/email', sendEmail);
+app.use('/upload', upload);
 app.use('/*', index);
 
 // Mongo Connection //
@@ -64,7 +68,7 @@ mongoDB.on('error', function(err){
    if(err) {
      console.log("MONGO ERROR: ", err);
    }
-   res.sendStatus(500);
+  //  res.sendStatus(500);
 });
 
 mongoDB.once('open', function(){

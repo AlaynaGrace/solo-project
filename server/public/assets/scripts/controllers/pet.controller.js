@@ -64,7 +64,8 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
       bathe: vm.checkbox.bathe,
       treats: vm.checkbox.treats,
       litter: vm.checkbox.treats,
-      household: vm.houseHold
+      household: vm.houseHold,
+      petimg: vm.petImg
     };
     PetService.addNewPet(objectToSend).then(function(){
       vm.name = '';

@@ -15,7 +15,8 @@ var petSchema = new Schema({
   bathe: Boolean,
   treats: Boolean,
   litter: Boolean,
-  household: {type: String, required: true}
+  household: {type: String, required: true},
+  petimg: Object
 });
 
 module.exports = mongoose.model('pets', petSchema);

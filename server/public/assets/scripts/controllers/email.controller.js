@@ -1,4 +1,4 @@
-myApp.controller('EmailController', ['EmailService','PetService',function(EmailService, PetService){
+myApp.controller('EmailController', ['$http','EmailService','PetService',function($http, EmailService, PetService){
   var vm = this;
 
   $http.get('/pets').then(function(response) {
@@ -18,13 +18,20 @@ myApp.controller('EmailController', ['EmailService','PetService',function(EmailS
   vm.sendEmail = function(){
     PetService.getAllPets().then(function(data){
       console.log('pets',data);
+      var careMessage = '';
       for (var i = 0; i < data.length; i++) {
         if(data[i].household === vm.houseHold){
-          vm.petList.push(data[i]);
+          careMessage += '<b>' + data[i].name + ' (' + data[i].color + ' ' + data[i].breed + '):</b> ' + data[i].care + '<br><br>';
         }
       }
-      EmailService.sendEmail(vm.petSitterEmail).then(function(data){
-        console.log('What happened when sending an email:',data);
+      if(vm.additionalComments !== ''){
+        careMessage += '<b>Additional Comments:</b> '+ vm.additionalComments;
+
+      }
+      EmailService.sendEmail(vm.petSitterEmail, careMessage).then(function(email){
+        console.log('What happened when sending an email:', email);
+        vm.petSitterEmail = '';
+        vm.additionalComments = '';
       });
     });
   };

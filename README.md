@@ -4,7 +4,6 @@
 
 * Fix register page (have to click register twice for it to work)
 * Continue styling so that it continues to look nice
-* Do drop down bar instead of links
 * Make a real readme
 * Use grunt to minify everything so that it runs faster
 * Be able to email a pet sitter with the care information (https://nodemailer.com/about/)

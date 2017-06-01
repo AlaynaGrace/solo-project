@@ -26,6 +26,16 @@
     <textarea ng-model="pc.observations" rows="8" cols="80"></textarea>
     <br>
     <button class="btn btn-default" ng-click="pc.sendText()">Send Care Text</button>
+    
+
+  </div>
+  <div class="users">
+    <div id="household" ng-controller="EmailController as ec">
+      <h3>Send All of Your Pet Care Information to a Pet Sitter</h3>
+      <label for="PetSitterEmail">Pet Sitter Email:</label>
+      <input type="text" ng-model="ec.petSitterEmail" value="">
+      <button class="btn btn-default" ng-click="ec.sendEmail()">Email Pet Sitter</button>
+    </div>
   </div>
   <div ng-controller="UserController as uc">
     <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>

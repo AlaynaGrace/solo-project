@@ -13,6 +13,7 @@ var user = require('./routes/user');
 var register = require('./routes/register');
 var addPet = require('./routes/addPet');
 var sendMessage = require('./routes/sendMessage');
+var sendEmail = require('./routes/sendEmail');
 
 
 
@@ -41,6 +42,7 @@ app.use('/registerUser', register);
 app.use('/user', user);
 app.use('/pets', addPet);
 app.use('/sendMessage',sendMessage);
+app.use('/email', sendEmail);
 app.use('/*', index);
 
 // Mongo Connection //

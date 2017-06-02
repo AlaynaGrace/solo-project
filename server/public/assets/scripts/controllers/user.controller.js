@@ -56,10 +56,12 @@ myApp.controller('UserController', ['$http', '$location', 'TextService','UserLis
       console.log(res);
     });
   };
+  vm.additionalMessage = '';
 
   vm.inviteNewUser = function(){
-    TextService.inviteNewUser(vm.newUserNumber, vm.houseHold).then(function(){
+    TextService.inviteNewUser(vm.newUserNumber, vm.houseHold, vm.additionalMessage).then(function(){
       vm.newUserNumber = '';
+      vm.additionalMessage = '';
     });
   };
 

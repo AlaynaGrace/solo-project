@@ -13,11 +13,11 @@ myApp.service('TextService',['$http',function($http){
     });
   };
 
-  self.inviteNewUser = function(phoneNumber, household){
+  self.inviteNewUser = function(phoneNumber, household, additionalMessage){
     return $http({
       url: '/sendMessage/invite',
       method: 'POST',
-      data: {number: phoneNumber, household: household}
+      data: {number: phoneNumber, household: household, additionalMessage: additionalMessage}
     }).then(function success(res){
       console.log(res);
     }, function failure(res){

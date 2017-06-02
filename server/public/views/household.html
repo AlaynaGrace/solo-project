@@ -10,8 +10,10 @@
 </div>
   <div class="invite">
     <h1>Invite a User</h1>
-    <label for="phoneNumber">Phone Number:</label>
-    <input type="text" ng-model="uc.newUserNumber" value="">
+    <label for="phoneNumber">Phone Number:</label><br>
+    <input type="text" ng-model="uc.newUserNumber" value=""><br>
+    <label for="additionalMessage">Add a message:</label><br>
+    <textarea name="name" ng-model="uc.additionalMessage" rows="8" cols="80"></textarea><br>
     <button type="button" class="btn btn-default" ng-click="uc.inviteNewUser()" name="button">Invite</button>
   </div>
   <div class="users">

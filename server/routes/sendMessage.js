@@ -48,10 +48,20 @@ router.post('/', function(req, res) {
 });
 
 router.post('/invite',function(req,res){
+  console.log('this is what you are sending over', req.body);
+  var newMessage = 'You have been invited to join Our Hobby Farm! Your household is: ' + req.body.household + '\n';
+  if(req.body.additionalMessage === ''){
+    console.log('type of message', typeof(req.body.additionalMessage));
+  }
+  else{
+    console.log('why you here tho');
+    newMessage += 'Message from user: ' + req.body.additionalMessage;
+
+  }
   client.messages.create({
       to: "+1" + req.body.number,
       from: "+17633163561",
-      body: 'You have been invited to join Our Hobby Farm! Your household is: ' + req.body.household,
+      body: newMessage,
   }, function(err, message) {
     if(err){
       console.log(err);

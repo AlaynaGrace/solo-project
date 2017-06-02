@@ -14,7 +14,7 @@ myApp.controller('EmailController', ['$http','EmailService','PetService',functio
           $location.path("/home");
       }
   });
-
+  vm.additionalComments = '';
   vm.sendEmail = function(){
     PetService.getAllPets().then(function(data){
       console.log('pets',data);
@@ -24,7 +24,10 @@ myApp.controller('EmailController', ['$http','EmailService','PetService',functio
           careMessage += '<b>' + data[i].name + ' (' + data[i].color + ' ' + data[i].breed + '):</b> ' + data[i].care + '<br><br>';
         }
       }
-      if(vm.additionalComments !== '' || vm.additionalComments !== undefined){
+      if(vm.additionalComments === ''){
+        console.log('no message');
+      }
+      else{
         careMessage += '<b>Additional Comments:</b> '+ vm.additionalComments;
 
       }

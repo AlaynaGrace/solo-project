@@ -2,9 +2,9 @@
 
 ## What's left
 
+* Favorites page
+* Add a page where an admin can assign care tasks to other people in their household
 * Continue styling so that it continues to look nice
 * Make a real readme
-* Use grunt to minify everything so that it runs faster
 * Create tests
 * Actually explain what the app does in an eloquent fashion
-* Add a page where an admin can assign care tasks to other people in their household

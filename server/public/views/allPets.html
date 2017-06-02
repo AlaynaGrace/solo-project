@@ -3,21 +3,27 @@
     <h1 id="household">Household Pets</h1>
     <hr>
     <div ng-repeat="pet in pc.petList">
-      <div>
-        <h3>{{pet.name}}</h3>
-        <img ng-src="{{pet.petimg}}" alt=""><br>
-        <b>Breed:</b> {{pet.breed}}
-        <br>
-        <b>Color:</b> {{pet.color}}
-        <br>
-        <b>Age:</b> {{pet.age}} {{pet.agelength}} old
-        <br>
-        <b>Owner:</b> {{pet.owner}}
-        <br>
-        <b>Care Information:</b><br>
-        {{pet.care}}
-        <br>
-        <button class="btn btn-default" ng-click="pc.removePet(pet._id)">Remove</button>
+      <div class="entire">
+        <div class="nameImg">
+          <h3>{{pet.name}}</h3>
+          <img ng-src="{{pet.petimg}}" alt=""><br>
+        </div>
+        <div class="other">
+          <b>Breed:</b> {{pet.breed}}
+          <br>
+          <b>Color:</b> {{pet.color}}
+          <br>
+          <b>Age:</b> {{pet.age}} {{pet.agelength}} old
+          <br>
+          <b>Owner:</b> {{pet.owner}}
+          <br>
+          <b>Care Information:</b><br>
+          {{pet.care}}
+          <br>
+        </div>
+        <div class="deletebutton">
+          <button class="btn btn-default" ng-click="pc.removePet(pet._id)">Remove</button>
+        </div>
         <hr>
       </div>
     </div>

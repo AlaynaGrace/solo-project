@@ -166,4 +166,6 @@ select, input, textarea{
 
 img{
   border-radius: 8px;
+  max-height: 300px;
+  max-width: 300px;
 }

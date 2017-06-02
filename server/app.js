@@ -53,7 +53,8 @@ var mongoURI = '';
 // are running on Heroku
 if(process.env.MONGODB_URI !== undefined) {
     // use the string value of the environment variable
-    mongoURI = process.env.MONGODB_URI;
+    // mongoURI = process.env.MONGODB_URI;
+    mongoURI = 'mongodb://heroku_6dpdg90h:u3fme3v5lq225cmpfeuhvitvfe@ds161021.mlab.com:61021/heroku_6dpdg90h';
 } else {
     // use the local database server
     mongoURI = 'mongodb://localhost:27017/passport';

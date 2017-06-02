@@ -15,7 +15,6 @@ var register = require('./routes/register');
 var addPet = require('./routes/addPet');
 var sendMessage = require('./routes/sendMessage');
 var sendEmail = require('./routes/sendEmail');
-var upload = require('./routes/upload');
 
 
 
@@ -46,7 +45,6 @@ app.use('/user', user);
 app.use('/pets', addPet);
 app.use('/sendMessage',sendMessage);
 app.use('/email', sendEmail);
-app.use('/upload', upload);
 app.use('/*', index);
 
 // Mongo Connection //

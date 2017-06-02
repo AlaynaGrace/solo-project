@@ -40,16 +40,20 @@
         <option ng-repeat="owner in pc.userList" value="{{owner.username}}">{{owner.username}}</option>
       </select>
       <br>
+      <label for="Select">Select Care Tasks:</label>
+      <br>
       <input type="checkbox" ng-model="pc.checkbox.feed"> Feed
       <input type="checkbox" ng-model="pc.checkbox.water"> Water
       <input type="checkbox" ng-model="pc.checkbox.walk"> Walk
       <input type="checkbox" ng-model="pc.checkbox.bathe"> Bathe
       <input type="checkbox" ng-model="pc.checkbox.treats"> Treats
       <input type="checkbox" ng-model="pc.checkbox.litter"> Clean Litter
-      <br>
-      <label for="PetImg">Select an image of your pet:</label>
-      <input type="file" ng-model="pc.petImg" name="file">
-      <br>
+      <br><br>
+      <!-- <label for="PetImg">Select an image of your pet:</label>
+      <input type="file" ng-model="pc.petImg" name="file"> -->
+      <label for="PetImg">Upload an Image of Your Pet: </label>
+      <input type="button" class="btn btn-default" value="Upload" ng-click="pc.showPicker()" />
+      <br><br>
       <button class="btn btn-default" ng-click="pc.addNewPet()">Add</button>
       </div>
     </div>

@@ -1,4 +1,4 @@
-myApp.controller('LoginController', ['$http', '$location', 'RegisterService', function($http, $location, RegisterService) {
+myApp.controller('LoginController', ['$http', '$location', 'RegisterService', '$window', function($http, $location, RegisterService, $window) {
   console.log('LoginController loaded');
     var vm = this;
 
@@ -15,6 +15,7 @@ myApp.controller('LoginController', ['$http', '$location', 'RegisterService', fu
       } else {
         console.log('sending to server...', vm.user);
         $http.post('/', vm.user).then(function(response) {
+          console.log(response);
           if(response.data.user.username) {
             console.log('success: ', response.data);
             // location works with SPA (ng-route)
@@ -36,25 +37,26 @@ myApp.controller('LoginController', ['$http', '$location', 'RegisterService', fu
         RegisterService.getHouseholds(vm.user.household).then(function(data){
           console.log('this should sometimes be undefined:', data);
           vm.newHousehold = data;
+          if(vm.newHousehold){
+            vm.user.admin = true;
+          }
+          else if(vm.newHousehold === false){
+            vm.user.admin = false;
+          }
+          console.log('newHousehold:',vm.newHousehold);
+          if(vm.user.admin !== undefined){
+            console.log('sending to server...', vm.user);
+            $http.post('/registerUser', vm.user).then(function(response) {
+              console.log('success');
+              $location.path('/home');
+              // $window.location.href = '/home';
+            },
+            function(response) {
+              console.log('error');
+              vm.message = "Please try again.";
+            });
+          }
         });
-        if(vm.newHousehold){
-          vm.user.admin = true;
-        }
-        else if(vm.newHousehold === false){
-          vm.user.admin = false;
-        }
-        console.log('newHousehold:',vm.newHousehold);
-        if(vm.user.admin !== undefined){
-          console.log('sending to server...', vm.user);
-          $http.post('/registerUser', vm.user).then(function(response) {
-            console.log('success');
-            $location.path('/home');
-          },
-          function(response) {
-            console.log('error');
-            vm.message = "Please try again.";
-          });
-        }
       }
     };
 }]);

@@ -1,4 +1,4 @@
-myApp.controller('PetController', ['PetService','$http', 'TextService','UserListService','$location',function(PetService,$http, TextService, UserListService, $location){
+myApp.controller('PetController', ['PetService','$http', 'TextService','UserListService','$location','$window','UploadService',function(PetService,$http, TextService, UserListService, $location,$window,UploadService){
   var vm = this;
   // vm.petList = PetService.allPets.petList;
   vm.petList = [];
@@ -33,17 +33,20 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
       } else {
           // user has no session, bounce them back to the login page
           $location.path("/home");
+          // $window.location.href = '/home';
       }
   });
   vm.getAllPets = function(){
+    console.log('getting all pets');
       PetService.getAllPets().then(function(data){
         console.log('pets',data);
+        vm.petList = [];
         for (var i = 0; i < data.length; i++) {
           if(data[i].household === vm.houseHold){
             vm.petList.push(data[i]);
           }
         }
-      console.log('in controller:', vm.petList);
+      console.log('******in controller:', vm.petList);
     });
   };
   vm.getAllPets();
@@ -65,7 +68,7 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
       treats: vm.checkbox.treats,
       litter: vm.checkbox.treats,
       household: vm.houseHold,
-      petimg: vm.petImg
+      petimg: vm.petImgUrl
     };
     PetService.addNewPet(objectToSend).then(function(){
       vm.name = '';
@@ -79,13 +82,14 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
       vm.checkbox.walk = false;
       vm.checkbox.bathe = false;
       vm.checkbox.treats = false;
-      vm.checkbox.treats = false;
+      vm.checkbox.litter = false;
     });
   };
 
   vm.removePet = function(id){
     console.log('removing', id);
     PetService.removePet(id).then(function(){
+      console.log('pet has been removed');
       vm.getAllPets();
     });
   };
@@ -132,6 +136,13 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
     console.log('weird object', vm.actionObject);
     vm.actionObject = {care:[]};
     vm.observations = '';
+  };
+
+  vm.showPicker = function(){
+    UploadService.showPicker().then(function(data){
+      vm.petImgUrl = data;
+      console.log('Pet img has been uploaded');
+    });
   };
 
 }]);

@@ -163,3 +163,7 @@ select, input, textarea{
     border-bottom-left-radius: 0px;
     border-bottom-right-radius: 0px;
 }
+
+img{
+  border-radius: 8px;
+}

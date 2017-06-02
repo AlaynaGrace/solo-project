@@ -1,4 +1,4 @@
-myApp.controller('UserController', ['$http', '$location', 'TextService','UserListService','AdminService',function($http, $location, TextService, UserListService, AdminService) {
+myApp.controller('UserController', ['$http', '$location', 'TextService','UserListService','AdminService','$window',function($http, $location, TextService, UserListService, AdminService, $window) {
   // This happens after view/controller loads -- not ideal but it works for now.
   var vm = this;
 
@@ -38,6 +38,7 @@ myApp.controller('UserController', ['$http', '$location', 'TextService','UserLis
         } else {
             // user has no session, bounce them back to the login page
             $location.path("/home");
+            // $window.location.href = '/home';
         }
     });
   };

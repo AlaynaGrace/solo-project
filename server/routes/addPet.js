@@ -1,9 +1,6 @@
 var express = require('express');
 var router = express.Router();
-var fs = require('fs');
 var pet = require('../models/pet.model');
-var multer = require('multer');
-var upload = multer({dest: 'uploads/'});
 var path = require('path');
 var user = require('../models/user.model');
 

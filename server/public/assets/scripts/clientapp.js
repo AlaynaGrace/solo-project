@@ -27,8 +27,6 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       templateUrl: '/views/household.html',
       controller: 'UserController as uc'
     })
-    .otherwise({
-      redirectTo: '/home'
-    });
+    .otherwise('/home');
 
 }]);

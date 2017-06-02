@@ -2,7 +2,6 @@
 
 ## What's left
 
-* Fix weird additionalComments bug that creates an undefined part in email
 * Continue styling so that it continues to look nice
 * Make a real readme
 * Use grunt to minify everything so that it runs faster

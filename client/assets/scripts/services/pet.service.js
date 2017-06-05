@@ -8,7 +8,7 @@ myApp.service('PetService', ['$http',function($http){
       method: 'GET',
       url: '/pets'
     }).then(function success(res){
-      console.log(res);
+      //console.log(res);
       self.allPets.petList = res.data.pets;
       console.log('in service:',self.allPets.petList);
       self.allPets.message = 'Pet added successfully!';
@@ -51,13 +51,13 @@ myApp.service('PetService', ['$http',function($http){
       method: 'GET',
       url: '/pets'
     }).then(function success(res){
-      console.log(res.data.pets);
+      //console.log(res.data.pets);
       var careArray = [];
       for(var i in res.data.pets){
         var pet = res.data.pets[i];
-        console.log('in for loop with this pet:',pet);
+        //console.log('in for loop with this pet:',pet);
         var careObject = {care:[], name: '', info:''};
-        console.log('your household:',household, 'pet household:',pet.household);
+        //console.log('your household:',household, 'pet household:',pet.household);
         if(pet.household === household){
           careObject.name = pet.name;
           careObject.info = pet.care;

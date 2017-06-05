@@ -1,4 +1,4 @@
-myApp.controller('PetController', ['PetService','$http', 'TextService','UserListService','$location','$window','UploadService',function(PetService,$http, TextService, UserListService, $location,$window,UploadService){
+myApp.controller('PetController', ['PetService','$http', 'TextService','UserListService','$location','$window','UploadService','FavoriteService',function(PetService,$http, TextService, UserListService, $location,$window,UploadService,FavoriteService){
   var vm = this;
   // vm.petList = PetService.allPets.petList;
   vm.petList = [];
@@ -15,7 +15,7 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
           vm.houseHold = response.data.user.household;
           vm.userList = [];
           UserListService.getUserList().then(function(data){
-            console.log('this is the data from userList:',data);
+            //console.log('this is the data from userList:',data);
             for(var i=0; i<data.length;i++){
               if(data[i].household === vm.houseHold){
                 vm.userList.push(data[i]);
@@ -24,11 +24,11 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
 
           });
           PetService.getPetCare(vm.houseHold).then(function(data){
-            console.log('this is the careList:',data, 'and this is your household:', vm.houseHold);
+            //console.log('this is the careList:',data, 'and this is your household:', vm.houseHold);
             vm.careList = data;
           });
 
-          console.log('User Data: ', vm.userList);
+          //console.log('User Data: ', vm.userList);
           // console.log('phoneNumber');
       } else {
           // user has no session, bounce them back to the login page
@@ -37,16 +37,16 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
       }
   });
   vm.getAllPets = function(){
-    console.log('getting all pets');
+    //console.log('getting all pets');
       PetService.getAllPets().then(function(data){
-        console.log('pets',data);
+        //console.log('pets',data);
         vm.petList = [];
         for (var i = 0; i < data.length; i++) {
           if(data[i].household === vm.houseHold){
             vm.petList.push(data[i]);
           }
         }
-      console.log('******in controller:', vm.petList);
+      //console.log('******in controller:', vm.petList);
     });
   };
   vm.getAllPets();
@@ -68,7 +68,8 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
       treats: vm.checkbox.treats,
       litter: vm.checkbox.treats,
       household: vm.houseHold,
-      petimg: vm.petImgUrl
+      petimg: vm.petImgUrl,
+      favorites: []
     };
     PetService.addNewPet(objectToSend).then(function(){
       vm.name = '';
@@ -83,6 +84,7 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
       vm.checkbox.bathe = false;
       vm.checkbox.treats = false;
       vm.checkbox.litter = false;
+      vm.uploadMessage = '';
     });
   };
 
@@ -137,12 +139,40 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
     vm.actionObject = {care:[]};
     vm.observations = '';
   };
-
+  vm.uploadMessage = '';
   vm.showPicker = function(){
     UploadService.showPicker().then(function(data){
       vm.petImgUrl = data;
+      vm.uploadMessage = "Picture has been uploaded!";
+
       console.log('Pet img has been uploaded');
     });
+
   };
+
+  vm.getFavorites = function(){
+    console.log('$$$$$ Getting Faves');
+    FavoriteService.getFavorites().then(function(data){
+      vm.favoritesList = data;
+    });
+  };
+
+  vm.addFavorite = function(){
+    vm.petIn = JSON.parse(vm.petIn);
+    console.log('petIn:',vm.petIn);
+
+    console.log('petIn:',vm.petIn.name);
+    var newPet = vm.petIn;
+    var newFaves = [vm.itemType,vm.item];
+    newPet.favorites.push(newFaves);
+
+    FavoriteService.addFavorite(newPet).then(function(){
+      vm.getAllPets();
+      vm.item = '';
+      vm.itemType = '';
+    });
+
+  };
+
 
 }]);

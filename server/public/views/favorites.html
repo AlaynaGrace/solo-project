@@ -1,0 +1,41 @@
+<div class="container">
+  <div class="dropdown">
+    <button class="dropbtn">Menu</button>
+    <div class="dropdown-content">
+      <a href="/userHome">Home</a>
+      <a href="/addPet">Add a Pet</a>
+      <a href="/care">Pet Care</a>
+      <a href="/household">Household</a>
+      <a href="/petFavorites">Pet Favorites</a>
+    </div>
+  </div>
+  <div class="users">
+    <h1 id="household">Favorites</h1>
+    <hr>
+    <div ng-repeat="pet in pc.petList">
+      <h3>{{pet.name}}</h3>
+      <ul>
+        <div ng-repeat="favorite in pet.favorites">
+          <li>Favorite {{favorite[0]}}: {{favorite[1]}}</li>
+        </div>
+      </ul>
+      <hr>
+    </div>
+  </div>
+  <div class="users">
+    <h1 id="household">Add a Favorite Item</h1>
+    <hr>
+    <label for="Pet">Pet:</label>
+    <select name="Pets" ng-model="pc.petIn">
+      <option ng-repeat="pet in pc.petList" value="{{pet}}">{{pet.name}}</option>
+    </select>
+    <label for="ItemType">Item Type:</label>
+    <input type="text" placeholder="ex: Food" ng-model="pc.itemType">
+    <label for="Item">Item</label>
+    <input type="text" placeholder="ex: Purina Dog Chow" ng-model="pc.item">
+    <button type="button" class="btn btn-default" ng-click="pc.addFavorite()">Add Favorite</button>
+  </div>
+  <div ng-controller="UserController as uc">
+    <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>
+  </div>
+</div>

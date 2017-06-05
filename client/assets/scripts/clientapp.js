@@ -26,6 +26,9 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     }).when('/household',{
       templateUrl: '/views/household.html',
       controller: 'UserController as uc'
+    }).when('/petFavorites',{
+      templateUrl: '/views/favorites.html',
+      controller: "PetController as pc"
     })
     .otherwise('/home');
 

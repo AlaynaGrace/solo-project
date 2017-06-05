@@ -15,7 +15,9 @@ module.exports = function(grunt){
           'server/public/assets/scripts/services/pet.service.min.js': ['client/assets/scripts/services/pet.service.js'],
           'server/public/assets/scripts/services/register.service.min.js': ['client/assets/scripts/services/register.service.js'],
           'server/public/assets/scripts/services/text.service.min.js': ['client/assets/scripts/services/text.service.js'],
-          'server/public/assets/scripts/services/userList.service.min.js': ['client/assets/scripts/services/userList.service.js']
+          'server/public/assets/scripts/services/userList.service.min.js': ['client/assets/scripts/services/userList.service.js'],
+          'server/public/assets/scripts/services/favorites.service.min.js': ['client/assets/scripts/services/favorites.service.js']
+
           //services and controllers need to be separate
         }
       }

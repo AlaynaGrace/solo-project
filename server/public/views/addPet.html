@@ -7,6 +7,7 @@
     <a href="/addPet">Add a Pet</a>
     <a href="/care">Pet Care</a>
     <a href="/household">Household</a>
+    <a href="/petFavorites">Pet Favorites</a>
   </div>
 </div>
   <div>
@@ -53,6 +54,7 @@
       <input type="file" ng-model="pc.petImg" name="file"> -->
       <label for="PetImg">Upload an Image of Your Pet: </label>
       <input type="button" class="btn btn-default" value="Upload" ng-click="pc.showPicker()" />
+      {{pc.uploadMessage}}
       <br><br>
       <button class="btn btn-default" ng-click="pc.addNewPet()">Add</button>
       </div>

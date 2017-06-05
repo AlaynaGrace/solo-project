@@ -53,15 +53,38 @@
 .welcomeMessage{
   text-align: center;
 }
-body{
-  background-color: #42ac48;
-  color: white;
-}
 .jumbotron{
   text-align: center;
   background-image: url('http://41sxr63vhe3b11yxuh2mklkp.wpengine.netdna-cdn.com/wp-content/uploads/2015/08/narnu-animal-banner-optim2.jpg');
-  background-size: contain;
-  text-shadow: 1px 1px black;
+  background-size: 100vw 55vh;
+  background-color: #42ac48;
+  font-family: 'Chewy', cursive;
+  background-attachment: local;
+  height: 400px;
+  background-repeat: no-repeat;
+}
+/*#green{
+  background-color: #42ac48;
+  background-image: none;
+  margin: -10%;
+
+}*/
+#transparent{
+  color: transparent;
+}
+#header{
+  font-family: 'Chewy', cursive;
+  color: white;
+  text-shadow: 2px 2px black;
+  text-align: center;
+  font-size: 10vw;
+  margin: -6%;
+}
+body{
+  background-color: #42ac48;
+  color: white;
+  font-family: 'Poppins', sans-serif;
+  background-attachment: fixed;
 }
 a{
   color:#DDDDDD;

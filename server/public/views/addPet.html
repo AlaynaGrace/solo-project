@@ -1,15 +1,7 @@
 <!-- this first div will be changed to a drop down menu -->
 <div class="container">
-  <div class="dropdown">
-  <button class="dropbtn">Menu</button>
-  <div class="dropdown-content">
-    <a href="/userHome">Home</a>
-    <a href="/addPet">Add a Pet</a>
-    <a href="/care">Pet Care</a>
-    <a href="/household">Household</a>
-    <a href="/petFavorites">Pet Favorites</a>
-  </div>
-</div>
+  <header ng-include="'/views/templates/menuAndTitle.html'"></header>
+
   <div>
     <div class="users">
       <h2 id="household">Add a Pet</h2>

@@ -54,21 +54,15 @@
   text-align: center;
 }
 .jumbotron{
-  text-align: center;
   background-image: url('http://41sxr63vhe3b11yxuh2mklkp.wpengine.netdna-cdn.com/wp-content/uploads/2015/08/narnu-animal-banner-optim2.jpg');
-  background-size: 100vw 55vh;
-  background-color: #42ac48;
-  font-family: 'Chewy', cursive;
-  background-attachment: local;
+  background-size: cover;
+  background-position: center;
   height: 400px;
   background-repeat: no-repeat;
 }
-/*#green{
-  background-color: #42ac48;
-  background-image: none;
-  margin: -10%;
-
-}*/
+b{
+  font-weight: 9000;
+}
 #transparent{
   color: transparent;
 }

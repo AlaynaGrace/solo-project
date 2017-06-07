@@ -6,7 +6,7 @@ myApp.service('UserListService', ['$http', function($http){
         method: 'GET',
         url: '/user/list'
       }).then(function success(res){
-        console.log(res.data);
+        // console.log(res.data);
         return res.data;
       },function failure(res){
         console.log(res);

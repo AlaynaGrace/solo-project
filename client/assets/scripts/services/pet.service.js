@@ -10,7 +10,7 @@ myApp.service('PetService', ['$http',function($http){
     }).then(function success(res){
       //console.log(res);
       self.allPets.petList = res.data.pets;
-      console.log('in service:',self.allPets.petList);
+      // console.log('in service:',self.allPets.petList);
       self.allPets.message = 'Pet added successfully!';
       return res.data.pets;
     }, function failure(res){
@@ -26,7 +26,7 @@ myApp.service('PetService', ['$http',function($http){
         url: '/pets',
         data: objectToSend
       }).then(function success(res){
-        console.log(res);
+        // console.log(res);
         self.getAllPets();
       }, function failure(res){
         console.log(res);
@@ -38,7 +38,7 @@ myApp.service('PetService', ['$http',function($http){
       method: 'DELETE',
       url: '/pets/' + id
     }).then(function success(res){
-      console.log(res);
+      // console.log(res);
       self.getAllPets();
     }, function failure(res){
       console.log(res);
@@ -46,7 +46,7 @@ myApp.service('PetService', ['$http',function($http){
   };
 
   self.getPetCare = function(household){
-    console.log('this is at the beginning:',household);
+    // console.log('this is at the beginning:',household);
     return $http({
       method: 'GET',
       url: '/pets'
@@ -85,6 +85,18 @@ myApp.service('PetService', ['$http',function($http){
       return careArray;
 
     },function failure(res){
+      console.log(res);
+    });
+  };
+
+  self.getIndividualPet = function(id){
+    return $http({
+      method: 'GET',
+      url: '/pets/individual/' + id
+    }).then(function success(res){
+      // console.log(res);
+      return res.data[0];
+    }, function failure(res){
       console.log(res);
     });
   };

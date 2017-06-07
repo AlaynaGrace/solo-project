@@ -1,0 +1,31 @@
+<div class="container" ng-init="pc.getIndividualPet()">
+  <div class="users">
+    <div>
+      <a id="petlink" href="/userHome">Back</a>
+      <h1>{{pc.indivName}}</h1>
+      <img ng-src="{{pc.indivPetimg}}" alt="">
+      <div class="other">
+        <b>Breed:</b> {{pc.indivBreed}}
+        <br>
+        <b>Color:</b> {{pc.indivColor}}
+        <br>
+        <b>Age:</b> {{pc.indivAge}} old
+        <br>
+        <b>Owner:</b> {{pc.indivOwner}}
+        <br>
+        <b>Care Information:</b><br>
+        {{pc.indivCare}}
+        <br>
+        <b>Favorites:</b><br>
+        <ul>
+          <div ng-repeat="favorite in pc.indivFavorites">
+            <li>Favorite {{favorite[0]}}: {{favorite[1]}}</li>
+          </div>
+        </ul>
+      </div>
+    </div>
+  </div>
+  <div ng-controller="UserController as uc">
+    <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>
+  </div>
+</div>

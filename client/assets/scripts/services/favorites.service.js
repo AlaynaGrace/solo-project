@@ -6,7 +6,7 @@ myApp.service('FavoriteService', ['$http',function($http){
       method: 'GET',
       url: '/pets'
     }).then(function success(res){
-      console.log('$$$$$$$$in FavoriteService getting:',res);
+      // console.log('$$$$$$$$in FavoriteService getting:',res);
       return res.data.pets;
     },function failure(res){
       console.log(res);
@@ -19,7 +19,7 @@ myApp.service('FavoriteService', ['$http',function($http){
       url: '/pets/favorites',
       data: objectToSend
     }).then(function success(res){
-      console.log('$$$$$$$in FavoriteService put, back with:', res);
+      // console.log('$$$$$$$in FavoriteService put, back with:', res);
     }, function failure(res){
       console.log(res);
     });

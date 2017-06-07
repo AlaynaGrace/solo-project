@@ -1,4 +1,4 @@
-myApp.controller('PetController', ['PetService','$http', 'TextService','UserListService','$location','$window','UploadService','FavoriteService',function(PetService,$http, TextService, UserListService, $location,$window,UploadService,FavoriteService){
+myApp.controller('PetController', ['$routeParams','PetService','$http', 'TextService','UserListService','$location','$window','UploadService','FavoriteService', function($routeParams, PetService, $http, TextService, UserListService, $location,$window,UploadService,FavoriteService){
   var vm = this;
   // vm.petList = PetService.allPets.petList;
   vm.petList = [];
@@ -7,7 +7,7 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
   // vm.userList = [];
 
   $http.get('/pets').then(function(response) {
-    console.log(response);
+    // console.log(response);
       if(response.data.user.username) {
           // user has a curret session on the server
           vm.userName = response.data.user.username;
@@ -52,7 +52,7 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
   vm.getAllPets();
 
   vm.addNewPet = function(){
-    console.log('adding a new pet!');
+    // console.log('adding a new pet!');
     var objectToSend={
       name: vm.name,
       breed: vm.breed,
@@ -89,9 +89,9 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
   };
 
   vm.removePet = function(id){
-    console.log('removing', id);
+    // console.log('removing', id);
     PetService.removePet(id).then(function(){
-      console.log('pet has been removed');
+      // console.log('pet has been removed');
       vm.getAllPets();
     });
   };
@@ -135,7 +135,7 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
       message.number = phoneNumber;
       TextService.sendText(message);
     }
-    console.log('weird object', vm.actionObject);
+    // console.log('weird object', vm.actionObject);
     vm.actionObject = {care:[]};
     vm.observations = '';
   };
@@ -145,13 +145,13 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
       vm.petImgUrl = data;
       vm.uploadMessage = "Picture has been uploaded!";
 
-      console.log('Pet img has been uploaded');
+      // console.log('Pet img has been uploaded');
     });
 
   };
 
   vm.getFavorites = function(){
-    console.log('$$$$$ Getting Faves');
+    // console.log('$$$$$ Getting Faves');
     FavoriteService.getFavorites().then(function(data){
       vm.favoritesList = data;
     });
@@ -159,9 +159,9 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
 
   vm.addFavorite = function(){
     vm.petIn = JSON.parse(vm.petIn);
-    console.log('petIn:',vm.petIn);
+    // console.log('petIn:',vm.petIn);
 
-    console.log('petIn:',vm.petIn.name);
+    // console.log('petIn:',vm.petIn.name);
     var newPet = vm.petIn;
     var newFaves = [vm.itemType,vm.item];
     newPet.favorites.push(newFaves);
@@ -173,6 +173,54 @@ myApp.controller('PetController', ['PetService','$http', 'TextService','UserList
     });
 
   };
+
+  vm.indivName = '';
+  vm.indivBreed = '';
+  vm.indivColor = '';
+  vm.indivAge = '';
+  vm.indivPetimg = '';
+  vm.indivOwner = '';
+  vm.indivCare = '';
+  vm.indivFavorites = '';
+  vm.indivId = $routeParams.id;
+
+  vm.getIndividualPet = function(){
+    vm.indivId = $routeParams.id;
+
+    var pet = {};
+    PetService.getAllPets().then(function(data){
+      //console.log('pets',data);
+      for (var i = 0; i < data.length; i++) {
+        if(data[i]._id === vm.indivId){
+          pet = data[i];
+        }
+      }
+    console.log('%%%%%%%%%%%%%%%%THIS IS THE PET', pet);
+    vm.indivName = pet.name;
+    vm.indivBreed = pet.breed;
+    vm.indivColor = pet.color;
+    vm.indivAge = pet.age + ' ' + pet.agelength;
+    vm.indivPetimg = pet.petimg;
+    vm.indivOwner = pet.owner;
+    vm.indivCare = pet.care;
+    vm.indivFavorites = pet.favorites;
+
+    console.log('This is the $routeParams.id', $routeParams.id);
+  });
+    // PetService.getIndividualPet($routeParams.id).then(function(data){
+    //   vm.indivName = data.name;
+    //   vm.indivBreed = data.breed;
+    //   vm.indivColor = data.color;
+    //   vm.indivAge = data.age + ' ' + data.agelength;
+    //   vm.indivPetimg = data.petimg;
+    //   vm.indivOwner = data.owner;
+    //   vm.indivCare = data.care;
+    //   vm.indivFavorites = data.favorites;
+    //
+    //   $location.path('/individual/' + data._id);
+    // });
+  };
+  // vm.getIndividualPet();
 
 
 }]);

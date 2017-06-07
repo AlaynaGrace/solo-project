@@ -109,5 +109,17 @@ router.put('/favorites',function(req,res){
   });
 });
 
+router.get('/individual/:id', function(req,res){
+  pet.find({_id: req.params.id},function(err,data){
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    }
+    else{
+      res.send(data);
+    }
+  });
+});
+
 
 module.exports = router;

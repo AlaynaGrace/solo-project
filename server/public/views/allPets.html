@@ -5,10 +5,13 @@
     <div ng-repeat="pet in pc.petList">
       <div class="entire">
         <div class="nameImg">
-          <h3>{{pet.name}}</h3>
-          <img ng-src="{{pet.petimg}}" alt=""><br>
+          <a id="petlink" href="/individual/{{pet._id}}">
+            <h3>{{pet.name}}</h3>
+            <img ng-src="{{pet.petimg}}" alt="">
+          </a>
+          <br>
         </div>
-        <div class="other">
+        <!-- <div class="other">
           <b>Breed:</b> {{pet.breed}}
           <br>
           <b>Color:</b> {{pet.color}}
@@ -20,10 +23,10 @@
           <b>Care Information:</b><br>
           {{pet.care}}
           <br>
-        </div>
-        <div class="deletebutton">
+        </div> -->
+        <!-- <div class="deletebutton">
           <button class="btn btn-default" ng-click="pc.removePet(pet._id)">Remove</button>
-        </div>
+        </div> -->
         <hr>
       </div>
     </div>

@@ -9,12 +9,10 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     .when('/home', {
       templateUrl: '/views/home.html',
       controller: "LoginController as lc"
-    })
-    .when('/register', {
+    }).when('/register', {
       templateUrl: '/views/register.html',
       controller: "LoginController as lc"
-    })
-    .when('/userHome', {
+    }).when('/userHome', {
       templateUrl: '/views/user.html',
       controller: "UserController as uc"
     }).when('/addPet',{
@@ -29,6 +27,10 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
     }).when('/petFavorites',{
       templateUrl: '/views/favorites.html',
       controller: "PetController as pc"
+    }).when('/individual/:id',{
+      templateUrl: '/views/individual.html',
+      controller: 'PetController',
+      controllerAs: 'pc'
     })
     .otherwise('/home');
 

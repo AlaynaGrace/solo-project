@@ -124,7 +124,7 @@ select, input, textarea{
   background-color: white;
   border: 1px solid black;
   border-radius: 8px;
-  padding: 10px;
+  padding: 10px; /* change to % */
   color: black;
   margin: 10px;
 }
@@ -200,4 +200,7 @@ img{
 }*/
 .entire{
   text-align: center;
+}
+.modal-title, .modal-body{
+  color: black;
 }

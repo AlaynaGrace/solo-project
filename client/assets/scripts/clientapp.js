@@ -1,9 +1,8 @@
-var myApp = angular.module('myApp', ['ngRoute']);
+var myApp = angular.module('myApp', ['ngRoute','ui.bootstrap']);
 
 /// Routes ///
 myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $locationProvider) {
   // get rid of 1.6.4 #!
-  $locationProvider.html5Mode(true);
 
   $routeProvider
     .when('/home', {
@@ -29,9 +28,11 @@ myApp.config(['$routeProvider', '$locationProvider', function($routeProvider, $l
       controller: "PetController as pc"
     }).when('/individual/:id',{
       templateUrl: '/views/individual.html',
-      controller: 'PetController',
-      controllerAs: 'pc'
+      controller: 'PetController as pc'
     })
     .otherwise('/home');
+
+    $locationProvider.html5Mode(true);
+
 
 }]);

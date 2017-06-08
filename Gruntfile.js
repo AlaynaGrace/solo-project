@@ -9,6 +9,7 @@ module.exports = function(grunt){
           'server/public/assets/scripts/controllers/login.controller.min.js': ['client/assets/scripts/controllers/login.controller.js'],
           'server/public/assets/scripts/controllers/pet.controller.min.js': ['client/assets/scripts/controllers/pet.controller.js'],
           'server/public/assets/scripts/controllers/user.controller.min.js': ['client/assets/scripts/controllers/user.controller.js'],
+          'server/public/assets/scripts/controllers/modalInstance.controller.min.js': ['client/assets/scripts/controllers/modalInstance.controller.js'],
           'server/public/assets/scripts/services/email.service.min.js': ['client/assets/scripts/services/email.service.js'],
           'server/public/assets/scripts/services/admin.service.min.js': ['client/assets/scripts/services/admin.service.js'],
           'server/public/assets/scripts/services/file.service.min.js': ['client/assets/scripts/services/file.service.js'],

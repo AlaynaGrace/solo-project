@@ -101,4 +101,15 @@ myApp.service('PetService', ['$http',function($http){
     });
   };
 
+  self.updatePetInfo = function(petToUpdate){
+    return $http({
+      method: 'PUT',
+      url: '/pets'
+    }).then(function success(res){
+      console.log(res);
+    }, function failure(res){
+      console.log(res);
+    });
+  };
+
 }]);

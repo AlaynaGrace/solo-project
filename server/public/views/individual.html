@@ -22,10 +22,63 @@
             <li>Favorite {{favorite[0]}}: {{favorite[1]}}</li>
           </div>
         </ul>
+        <div class="deletebutton">
+          <button class="btn btn-default" ng-click="pc.removePet()">Remove</button>
+          <button class="btn btn-default" ng-click="pc.open()">Update</button>
+
+        </div>
       </div>
     </div>
   </div>
   <div ng-controller="UserController as uc">
     <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>
   </div>
+</div>
+
+<div class="modal-demo">
+  <!-- the actual template HTML -->
+  <script type="text/ng-template" id="myModalContent.html">
+    <div class="modal-header">
+      <h3 class="modal-title" id="modal-title">{{mic.title}}</h3>
+    </div>
+    <div class="modal-body" id="modal-body" ng-controller="PetController as pc">
+      Name:
+      <input type="text" ng-model="pc.changeName" value="{{pc.indivName}}">
+      <br>
+      Breed:
+      <input type="text" ng-model="pc.changeBreed" value="">
+      <br>
+      Color:
+      <input type="text" ng-model="pc.changeColor" value="">
+      <br>
+      Age:
+      <input type="number" ng-model="pc.changeAge" value="">
+      Age Length:
+      <select name="age-length" ng-model="pc.agelength">
+        <option value="year(s)">year(s)</option>
+        <option value="month(s)">month(s)</option>
+        <option value="day(s)">day(s)</option>
+      </select>
+      <br>
+      Owner:
+      <select name="age-length" ng-model="pc.agelength">
+        <option value="year(s)">year(s)</option>
+        <option value="month(s)">month(s)</option>
+        <option value="day(s)">day(s)</option>
+      </select>
+      <br>
+      Care Information:
+      <textarea name="name" rows="8" cols="75" ng-model="pc.care"></textarea>
+      <br>
+
+
+
+
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-primary" type="button" ng-click="mic.ok()">Save Changes</button>
+      <button class="btn btn-warning" type="button" ng-click="mic.cancel()">Cancel</button>
+    </div>
+  </script>
+
 </div>

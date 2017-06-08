@@ -121,5 +121,17 @@ router.get('/individual/:id', function(req,res){
   });
 });
 
+router.put('/',function(req,res){
+  pet.update({_id: req.body._id},req.body,function(err){
+    if(err){
+      console.log(err);
+      res.sendStatus(500);
+    }
+    else{
+      res.sendStatus(200);
+    }
+  });
+});
+
 
 module.exports = router;

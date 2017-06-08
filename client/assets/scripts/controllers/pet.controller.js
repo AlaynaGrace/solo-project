@@ -1,4 +1,4 @@
-myApp.controller('PetController', ['$routeParams','PetService','$http', 'TextService','UserListService','$location','$window','UploadService','FavoriteService', function($routeParams, PetService, $http, TextService, UserListService, $location,$window,UploadService,FavoriteService){
+myApp.controller('PetController', ['$uibModal', '$log','$routeParams','PetService','$http', 'TextService','UserListService','$location','$window','UploadService','FavoriteService', function($uibModal, $log, $routeParams, PetService, $http, TextService, UserListService, $location,$window,UploadService,FavoriteService){
   var vm = this;
   // vm.petList = PetService.allPets.petList;
   vm.petList = [];
@@ -88,11 +88,14 @@ myApp.controller('PetController', ['$routeParams','PetService','$http', 'TextSer
     });
   };
 
-  vm.removePet = function(id){
+  vm.removePet = function(){
     // console.log('removing', id);
-    PetService.removePet(id).then(function(){
+    PetService.removePet($routeParams.id).then(function(){
       // console.log('pet has been removed');
-      vm.getAllPets();
+      // vm.getAllPets();
+      $location.path("/userHome");
+
+
     });
   };
 
@@ -222,5 +225,59 @@ myApp.controller('PetController', ['$routeParams','PetService','$http', 'TextSer
   };
   // vm.getIndividualPet();
 
+  // vm.updatePetInfo = function(){
+  //   PetService.updatePetInfo(petInfo).then(function(){
+  //     vm.getIndividualPet();
+  //   });
+  // };
 
+
+  vm.open = function (size, parentSelector) {
+    vm.animationsEnabled = true;
+
+    var parentElem = parentSelector ?
+      angular.element($document[0].querySelector('.modal-demo' + parentSelector)) : undefined;
+      console.log('this is the size and parentSelector', size, parentSelector);
+    var modalInstance = $uibModal.open({
+      animation: vm.animationsEnabled,
+      ariaLabelledBy: 'modal-title',
+      ariaDescribedBy: 'modal-body',
+      templateUrl: 'myModalContent.html',   // HTML in the modal.html template
+      controller: 'ModalInstanceController',
+      controllerAs: 'mic',
+      size: size,
+      appendTo: parentElem,
+      resolve: {
+        title: function () {
+          return 'Psi Modals Rule!!11!';
+        }
+      }
+    }).result.then(function(){
+      console.log('It was closed!');
+    });
+    console.log('modalInstance:', modalInstance);
+
+    // log a timestamp when the modal is dismissed
+    // modalInstance.result.then(function () {
+    //   $log.info('Modal dismissed at: ' + new Date());
+    // });
+  };
+
+
+
+}]);
+
+myApp.controller('ModalInstanceController',['$uibModalInstance','title',function ($uibModalInstance, title) {
+  var vm = this;
+
+  vm.title = title;
+  console.log('vm.title:', vm.title);
+
+  vm.ok = function () {
+    $uibModalInstance.close();
+  };
+
+  vm.cancel = function () {
+    $uibModalInstance.dismiss('cancel');
+  };
 }]);

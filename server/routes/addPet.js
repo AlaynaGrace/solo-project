@@ -32,7 +32,7 @@ router.get('/', function(req, res) {
       }
       else{
         responseObject.pets = data;
-        console.log(responseObject);
+        // console.log(responseObject);
         res.send(responseObject);
       }
     });
@@ -122,6 +122,7 @@ router.get('/individual/:id', function(req,res){
 });
 
 router.put('/',function(req,res){
+  console.log('in put with:', req.body);
   pet.update({_id: req.body._id},req.body,function(err){
     if(err){
       console.log(err);

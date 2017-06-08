@@ -17,7 +17,8 @@ var petSchema = new Schema({
   litter: Boolean,
   household: {type: String, required: true},
   petimg: Object,
-  favorites: Object
+  favorites: Object,
+  gallery: Object
 });
 
 module.exports = mongoose.model('pets', petSchema);

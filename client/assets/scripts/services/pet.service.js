@@ -104,12 +104,26 @@ myApp.service('PetService', ['$http',function($http){
   self.updatePetInfo = function(petToUpdate){
     return $http({
       method: 'PUT',
-      url: '/pets'
+      url: '/pets',
+      data: petToUpdate
     }).then(function success(res){
       console.log(res);
     }, function failure(res){
       console.log(res);
     });
   };
+
+  self.addAnotherPetPicture = function(petWithNewPicture){
+    return $http({
+      method: 'PUT',
+      url: '/pets',
+      data: petWithNewPicture
+    }).then(function success(res){
+      console.log(res);
+    }, function fail(res){
+      console.log(res);
+    });
+  };
+
 
 }]);

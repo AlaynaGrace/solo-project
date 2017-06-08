@@ -1,4 +1,6 @@
 <div class="container" ng-init="pc.getIndividualPet()">
+  <header ng-include="'/views/templates/menuAndTitle.html'"></header>
+  
   <div class="users">
     <div>
       <a id="petlink" href="/userHome">Back</a>
@@ -25,9 +27,20 @@
         <div class="deletebutton">
           <button class="btn btn-default" ng-click="pc.removePet()">Remove</button>
           <button class="btn btn-default" ng-click="pc.open()">Update</button>
-
+          <br>
+          Add New Picture to Gallery: <input type="button" class="btn btn-default" value="Upload" ng-click="pc.showPickerForGallery()" />
         </div>
       </div>
+    </div>
+  </div>
+  <div class="users">
+    <h1 id="household">Gallery</h1>
+    <hr>
+    <div ng-repeat="picture in pc.gallery" id="petimgs">
+      <div>
+        <img ng-src="{{picture}}">
+      </div>
+      <br>
     </div>
   </div>
   <div ng-controller="UserController as uc">
@@ -41,42 +54,58 @@
     <div class="modal-header">
       <h3 class="modal-title" id="modal-title">{{mic.title}}</h3>
     </div>
-    <div class="modal-body" id="modal-body" ng-controller="PetController as pc">
+    <div class="modal-body" id="modal-body">
       Name:
-      <input type="text" ng-model="pc.changeName" value="{{pc.indivName}}">
+      <input type="text" ng-model="mic.changeName" ng-value="mic.indivName">
       <br>
       Breed:
-      <input type="text" ng-model="pc.changeBreed" value="">
+      <input type="text" ng-model="mic.changeBreed" ng-value="mic.indivBreed">
       <br>
       Color:
-      <input type="text" ng-model="pc.changeColor" value="">
+      <input type="text" ng-model="mic.changeColor" ng-value="mic.indivColor">
       <br>
       Age:
-      <input type="number" ng-model="pc.changeAge" value="">
+      <input type="number" ng-model="mic.changeAge" value="{{mic.indivAge}}">
       Age Length:
-      <select name="age-length" ng-model="pc.agelength">
+      <select name="age-length" ng-model="mic.ageLengthChange" ng-value="mic.indivAgeLength">
         <option value="year(s)">year(s)</option>
         <option value="month(s)">month(s)</option>
         <option value="day(s)">day(s)</option>
       </select>
       <br>
-      Owner:
-      <select name="age-length" ng-model="pc.agelength">
-        <option value="year(s)">year(s)</option>
-        <option value="month(s)">month(s)</option>
-        <option value="day(s)">day(s)</option>
+      Owner: <br> Current Owner: {{mic.indivOwner}}<br>
+      <select name="Owners" ng-model="mic.ownerChange" ng-value="mic.indivOwner">
+        <option ng-repeat="owner in mic.userList" value="{{owner.username}}">{{owner.username}}</option>
       </select>
       <br>
       Care Information:
-      <textarea name="name" rows="8" cols="75" ng-model="pc.care"></textarea>
+      <textarea name="name" rows="8" cols="75" ng-model="mic.careChange" ng-value="mic.indivCare"></textarea>
       <br>
+      <label for="Select">Select Care Tasks:</label>
+      <br>
+      <input type="checkbox" ng-model="mic.checkbox.feed"> Feed
+      <input type="checkbox" ng-model="mic.checkbox.water"> Water
+      <input type="checkbox" ng-model="mic.checkbox.walk"> Walk
+      <input type="checkbox" ng-model="mic.checkbox.bathe"> Bathe
+      <input type="checkbox" ng-model="mic.checkbox.treats"> Treats
+      <input type="checkbox" ng-model="mic.checkbox.litter"> Clean Litter
+      <br>
+      Favorites:<br>
+      <div ng-repeat="favorite in mic.indivFavorites">
+        <li>Favorite {{favorite[0]}}: {{favorite[1]}}
+         <button type="button" class="btn btn-default" name="button" ng-click="mic.removeFavorite(favorite)">Delete Favorite</button></li>
+      </div>
+      <br>
+      Upload different picture:
+      <input type="button" class="btn btn-default" value="Upload" ng-click="mic.showPicker()" />
 
+      <br>
 
 
 
     </div>
     <div class="modal-footer">
-      <button class="btn btn-primary" type="button" ng-click="mic.ok()">Save Changes</button>
+      <button class="btn btn-primary" type="button" ng-click="mic.updatePet()">Save Changes</button>
       <button class="btn btn-warning" type="button" ng-click="mic.cancel()">Cancel</button>
     </div>
   </script>

@@ -199,6 +199,9 @@ img{
 #petimgs{
   text-align: center;
 }
+textarea{
+  width: 100%;
+}
 /*.other{
   margin-left: 30%;
   margin-top: -10%;

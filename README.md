@@ -3,6 +3,7 @@
 ## What's left
 
 * Add a page where an admin can assign care tasks to other people in their household
+* Fix the delete favorites 
 * Search for a pet
   * http://angular-ui.github.io/bootstrap/
     * typeahead

@@ -1,6 +1,6 @@
 <div class="container" ng-init="pc.getIndividualPet()">
   <header ng-include="'/views/templates/menuAndTitle.html'"></header>
-  
+
   <div class="users">
     <div>
       <a id="petlink" href="/userHome">Back</a>
@@ -79,7 +79,7 @@
       </select>
       <br>
       Care Information:
-      <textarea name="name" rows="8" cols="75" ng-model="mic.careChange" ng-value="mic.indivCare"></textarea>
+      <textarea name="name" rows="8" cols="60" ng-model="mic.careChange" ng-value="mic.indivCare"></textarea>
       <br>
       <label for="Select">Select Care Tasks:</label>
       <br>
@@ -90,12 +90,12 @@
       <input type="checkbox" ng-model="mic.checkbox.treats"> Treats
       <input type="checkbox" ng-model="mic.checkbox.litter"> Clean Litter
       <br>
-      Favorites:<br>
+      <!-- Favorites:<br>
       <div ng-repeat="favorite in mic.indivFavorites">
         <li>Favorite {{favorite[0]}}: {{favorite[1]}}
          <button type="button" class="btn btn-default" name="button" ng-click="mic.removeFavorite(favorite)">Delete Favorite</button></li>
       </div>
-      <br>
+      <br> -->
       Upload different picture:
       <input type="button" class="btn btn-default" value="Upload" ng-click="mic.showPicker()" />
 

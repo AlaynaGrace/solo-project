@@ -1,22 +1,19 @@
-# Solo Project
+# Our Hobby Farm
 
-## What's left
+Our Hobby Farm is a web application that helps pet owners keep track of their pet care tasks.
 
-* Add a page where an admin can assign care tasks to other people in their household
-* Fix the delete favorites 
-* Search for a pet
-  * http://angular-ui.github.io/bootstrap/
-    * typeahead
-  * https://stackoverflow.com/questions/21891229/search-box-in-angular-js
-* Continue styling so that it continues to look nice
-* Make a real readme
-* Create tests
-* Actually explain what the app does in an eloquent fashion
+## What the App Does
 
+Users can register to an existing household or create a new one. After a user logs in, he/she can add pets, check off that they have completed care tasks, update pet info, see who is in their household, invite new users to their household, upload pictures of their pets to their gallery, and send an email to a pet sitter with all of the care information they inputted when adding or updating a pet.
 
-## Assign care tasks
+## Technology Used
 
-* Add a tasks array to the user model so that when you register, you automatically have an empty array of tasks
-* Two options:
-  1. Make the tasks page accessible to everyone but only have one div showing for those who are admins that lets them assign tasks to people in their household
-  2. Make the entire care tasks page only visible to the admins and then show tasks that have been assigned to you on the main page
+  * MEAN stack
+  * Twilio
+  * Nodemailer
+  * Filestack
+  * Passport
+
+## Heroku
+
+  https://ourhobbyfarm.herokuapp.com/

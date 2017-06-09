@@ -256,7 +256,8 @@ myApp.controller('PetController', ['$uibModal', '$log','$routeParams','PetServic
       }
     }).result.then(function(){
       console.log('It was closed!');
-      location.reload();
+      // location.reload();
+      vm.getIndividualPet();
     });
     console.log('modalInstance:', modalInstance);
   };
@@ -389,6 +390,7 @@ myApp.controller('ModalInstanceController',['$uibModalInstance','title','PetServ
         water: vm.checkbox.water
       };
       PetService.updatePetInfo(objectToSend).then(function(){
+
         $uibModalInstance.close();
       });
     }

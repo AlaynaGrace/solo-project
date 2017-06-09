@@ -17,25 +17,27 @@ router.get('/', function(req, res) {
       user: req.user
     };
 
-    user.find(function(err,data){
+    user.find(function(err,userData){
       if(err){
-        console.log(err);
-        res.send(req.user);
+        console.log("Error retrieving from users",err);
+        res.sendStatus(500);
       }
       else{
-        responseObject.userList = data;
+        responseObject.userList = userData;
+        pet.find(function(err,petData){
+          if(err){
+            console.log('Error retrieving from pets', err);
+            res.sendStatus(500);
+          }
+          else{
+            responseObject.pets = petData;
+            // console.log(responseObject);
+            res.send(responseObject);
+          }
+        });
       }
     });
-    pet.find(function(err,data){
-      if(err){
-        res.send(req.user);
-      }
-      else{
-        responseObject.pets = data;
-        // console.log(responseObject);
-        res.send(responseObject);
-      }
-    });
+
 
     //**create an object here to send all user info and all pet info**//
 

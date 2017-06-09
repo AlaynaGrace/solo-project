@@ -127,6 +127,8 @@ select, input, textarea{
   padding: 10px; /* change to % */
   color: black;
   margin: 10px;
+  float: left;
+  width: 100%;
 }
 #household{
   text-align: center;
@@ -193,11 +195,16 @@ img{
   border-radius: 8px;
   max-height: 300px;
   max-width: 300px;
+  /*display: block;*/
 
 }
+#petimg{
+  display: block;
+    margin: 0 auto;
+}
 
-#petimgs{
-  text-align: center;
+.petimg{
+  width: 100%;
 }
 textarea{
   width: 100%;

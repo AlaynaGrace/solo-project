@@ -1,4 +1,4 @@
-myApp.controller('PetController', ['$uibModal', '$log','$routeParams','PetService','$http', 'TextService','UserListService','$location','$window','UploadService','FavoriteService', function($uibModal, $log, $routeParams, PetService, $http, TextService, UserListService, $location,$window,UploadService,FavoriteService){
+myApp.controller('PetController', ['$uibModal', '$log','$routeParams','PetService','$http', 'TextService','UserListService','$location','$window','UploadService','FavoriteService','$scope', function($uibModal, $log, $routeParams, PetService, $http, TextService, UserListService, $location,$window,UploadService,FavoriteService, $scope){
   var vm = this;
   // vm.petList = PetService.allPets.petList;
   vm.petList = [];
@@ -145,12 +145,17 @@ myApp.controller('PetController', ['$uibModal', '$log','$routeParams','PetServic
   };
   vm.uploadMessage = '';
   vm.showPicker = function(){
+    vm.petImgUrl = '';
     UploadService.showPicker().then(function(data){
       vm.petImgUrl = data;
       vm.uploadMessage = "Picture has been uploaded!";
-
+      $scope.$apply();
       // console.log('Pet img has been uploaded');
     });
+    // if(vm.petImgUrl !== undefined || vm.petImgUrl !== ''){
+    //   vm.uploadMessage = "Picture has been uploaded!";
+    // }
+    // vm.uploadMessage = "Picture has been uploaded!";
 
   };
 

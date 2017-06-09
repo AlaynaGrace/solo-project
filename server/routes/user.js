@@ -44,14 +44,20 @@ router.get('/logout', function(req, res) {
 });
 
 router.delete('/:id',function(req,res){
-  user.remove({_id: req.params.id}, function(err){
-    if(err){
-      console.log(err);
-      res.sendStatus(500);
-    }else{
-      res.sendStatus(200);
-    }
-  });
+  if(req.isAuthenticated() && req.user.admin){
+    user.remove({_id: req.params.id}, function(err){
+      if(err){
+        console.log(err);
+        res.sendStatus(500);
+      }else{
+        res.sendStatus(200);
+      }
+    });
+  }
+  else{
+    res.sendStatus(403);
+  }
+
 });
 
 router.get('/list',function(req,res){

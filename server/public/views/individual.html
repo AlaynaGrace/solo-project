@@ -33,15 +33,37 @@
       </div>
     </div>
   </div>
+
+  <!-- Code luke gave to fix weird picture -->
+
+
+
+
+
+
   <div class="users">
     <h1 id="household">Gallery</h1>
     <hr>
-    <div ng-repeat="picture in pc.gallery" id="petimgs">
-      <div>
-        <img ng-src="{{picture}}">
-      </div>
+    <div layout="column" ng-if="pc.gallery.length > 0">
+    <md-content layout="row" class="col-xs-12 container">
+        <md-card ng-repeat="picture in pc.gallery" ng-if="$index % 2 == 0">
+        <img ng-src="{{picture}}" class="petimg">
+        </md-card>
+    </md-content>
+    <md-content layout="row" class="col-xs-12 container">
+        <md-card ng-repeat="picture in pc.gallery" ng-if="$index % 2 == 1">
+        <img ng-src="{{picture}}" class="petimg">
+        </md-card>
+    </md-content>
+  </div>
+    <!-- <div class="col-xs-12 container" >
+    <div ng-repeat="picture in pc.gallery"  class="col-xs-3">
+       <div>
+        <img ng-src="{{picture}}" class="petimg">
+       </div>
       <br>
     </div>
+     </div> -->
   </div>
   <div ng-controller="UserController as uc">
     <button class="btn btn-default logout" ng-click="uc.logout()">Log Out</button>

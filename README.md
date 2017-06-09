@@ -17,3 +17,9 @@ Users can register to an existing household or create a new one. After a user lo
 ## Heroku
 
   https://ourhobbyfarm.herokuapp.com/
+
+## Setting up an Account on Heroku
+
+  If you would like to set up an account with Our Hobby Farm, please email me at: alaynagrace@comcast.net
+
+  There are some extra steps needed to get the application to text you and everyone in your household.

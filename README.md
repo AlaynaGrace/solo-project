@@ -43,7 +43,7 @@ $ npm start
 
 ## Heroku
 
-  https://ourhobbyfarm.herokuapp.com/
+  http://www.ourhobbyfarm.org
 
 ## Setting up an Account on Heroku
 
